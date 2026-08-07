@@ -1,0 +1,237 @@
+<!doctype html>
+<title>InsurTech / Retirement Job Watch</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root {
+  --bg: #f6f7fb;
+  --bg-card: #ffffff;
+  --text: #1a1d29;
+  --text-muted: #5b6072;
+  --border: #e3e5ec;
+  --accent: #4f5fea;
+  --accent-soft: #eef0ff;
+  --pm-color: #2f6fed;
+  --pm-soft: #e8f0ff;
+  --qa-color: #d1670b;
+  --qa-soft: #fff1e0;
+  --new-badge: #17a673;
+  --new-badge-soft: #e3faf0;
+  --shadow: 0 1px 2px rgba(20,20,40,0.04), 0 4px 14px rgba(20,20,40,0.05);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117;
+    --bg-card: #171a23;
+    --text: #e9ebf2;
+    --text-muted: #9aa0b4;
+    --border: #262b38;
+    --accent: #8a92ff;
+    --accent-soft: #22243a;
+    --pm-color: #7fa8ff;
+    --pm-soft: #17223d;
+    --qa-color: #f0a84e;
+    --qa-soft: #3a2712;
+    --new-badge: #4fd6a4;
+    --new-badge-soft: #103426;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 14px rgba(0,0,0,0.35);
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+.wrap { max-width: 980px; margin: 0 auto; padding: 20px 16px 60px; }
+header { margin-bottom: 20px; }
+h1 { font-size: 1.5rem; margin: 0 0 6px; letter-spacing: -0.01em; }
+.meta-row {
+  display: flex; flex-wrap: wrap; gap: 10px 18px;
+  color: var(--text-muted); font-size: 0.85rem; margin-top: 8px;
+}
+.stat-strip {
+  display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 4px;
+}
+.stat-tile {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 10px 16px; box-shadow: var(--shadow); flex: 1 1 140px; min-width: 120px;
+}
+.stat-tile .num { font-size: 1.4rem; font-weight: 700; }
+.stat-tile .label { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+.controls {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  margin: 20px 0 14px; position: sticky; top: 0; background: var(--bg);
+  padding: 10px 0; z-index: 5;
+}
+#search {
+  flex: 1 1 220px; padding: 10px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--bg-card); color: var(--text);
+  font-size: 0.95rem; outline: none;
+}
+#search:focus { border-color: var(--accent); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab-btn {
+  padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border);
+  background: var(--bg-card); color: var(--text-muted); font-size: 0.83rem;
+  cursor: pointer; white-space: nowrap;
+}
+.tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+section { margin-bottom: 28px; }
+h2 { font-size: 1.05rem; margin: 0 0 12px; }
+.empty-note { color: var(--text-muted); font-size: 0.9rem; padding: 10px 2px; }
+
+.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+.job-card {
+  display: block; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 14px 16px; text-decoration: none; color: var(--text);
+  box-shadow: var(--shadow); transition: transform 0.1s ease;
+}
+.job-card:hover { transform: translateY(-1px); border-color: var(--accent); }
+.job-title { font-weight: 650; font-size: 0.98rem; margin-bottom: 4px; }
+.job-sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 8px; }
+.badge-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.badge {
+  font-size: 0.7rem; padding: 3px 9px; border-radius: 999px; font-weight: 600;
+}
+.badge.pm { background: var(--pm-soft); color: var(--pm-color); }
+.badge.qa { background: var(--qa-soft); color: var(--qa-color); }
+.badge.other { background: var(--accent-soft); color: var(--accent); }
+.badge.new { background: var(--new-badge-soft); color: var(--new-badge); }
+.badge.source { background: var(--accent-soft); color: var(--text-muted); }
+
+.job-list { display: flex; flex-direction: column; gap: 10px; }
+.job-row {
+  display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 12px 16px; text-decoration: none; color: var(--text); box-shadow: var(--shadow);
+}
+.job-row:hover { border-color: var(--accent); }
+.job-row .jr-title { font-weight: 650; font-size: 0.95rem; }
+.job-row .jr-meta { color: var(--text-muted); font-size: 0.82rem; }
+.job-row .jr-date { color: var(--text-muted); font-size: 0.78rem; margin-left: auto; }
+
+footer { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 30px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>InsurTech / Retirement Job Watch</h1>
+    <div class="meta-row">
+      <span>Last updated: 07 Aug 2026, 07:56 PM IST</span>
+    </div>
+    <div class="stat-strip">
+      <div class="stat-tile"><div class="num">2</div><div class="label">Total jobs tracked</div></div>
+      <div class="stat-tile"><div class="num">2</div><div class="label">Added today</div></div>
+    </div>
+  </header>
+
+  <div class="controls">
+    <input id="search" type="text" placeholder="Search title, company, location&hellip;" autocomplete="off">
+    <div class="tabs">
+      <button class="tab-btn active" data-cat="all">All</button>
+      <button class="tab-btn" data-cat="pm">Project / Program / Delivery</button>
+      <button class="tab-btn" data-cat="qa">Quality / QA / Test</button>
+    </div>
+  </div>
+
+  <section id="new-today-section">
+    <h2>New Today</h2>
+    <div id="new-today-grid" class="card-grid"></div>
+    <div id="new-today-empty" class="empty-note" style="display:none;">No new postings added today.</div>
+  </section>
+
+  <section>
+    <h2>All Tracked Jobs</h2>
+    <div id="all-jobs-list" class="job-list"></div>
+    <div id="all-jobs-empty" class="empty-note" style="display:none;">No jobs match your filters.</div>
+  </section>
+
+  <footer>InsurTech / Retirement Job Watch &middot; auto-generated daily &middot; data sourced from public job listings</footer>
+</div>
+
+<script>
+const ALL_JOBS = [{"date": "2026-08-07", "title": "Senior Delivery Manager - Life Insurance Domain", "company": "illumifin India", "location": "Pune City, Maharashtra", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/illumifin-senior-delivery-manager-life-insurance-domain-at-illumifin-india-4447227678", "status": "New", "category": "pm"}, {"date": "2026-08-07", "title": "Technical Project Manager (P&C Insurance Domain, BPM, Workflow Automation Platforms)", "company": "Prasha Consultancy Services Private Limited", "location": "India (city not stated)", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/technical-project-manager-p-c-insurance-domain-bpm-workflow-automation-platforms-at-prasha-consultancy-services-private-limited-4446047992", "status": "New", "category": "pm"}];
+const TODAY_JOBS = [{"date": "2026-08-07", "title": "Senior Delivery Manager - Life Insurance Domain", "company": "illumifin India", "location": "Pune City, Maharashtra", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/illumifin-senior-delivery-manager-life-insurance-domain-at-illumifin-india-4447227678", "status": "New", "category": "pm"}, {"date": "2026-08-07", "title": "Technical Project Manager (P&C Insurance Domain, BPM, Workflow Automation Platforms)", "company": "Prasha Consultancy Services Private Limited", "location": "India (city not stated)", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/technical-project-manager-p-c-insurance-domain-bpm-workflow-automation-platforms-at-prasha-consultancy-services-private-limited-4446047992", "status": "New", "category": "pm"}];
+
+function catLabel(cat) {
+  if (cat === "pm") return "PM/Delivery";
+  if (cat === "qa") return "QA/Quality";
+  return "Other";
+}
+
+function esc(s) {
+  const d = document.createElement("div");
+  d.textContent = s == null ? "" : s;
+  return d.innerHTML;
+}
+
+function jobCardHTML(job) {
+  return '<a class="job-card" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
+    '<div class="job-title">' + esc(job.title) + '</div>' +
+    '<div class="job-sub">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</div>' +
+    '<div class="badge-row">' +
+      '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
+      '<span class="badge source">' + esc(job.source) + '</span>' +
+    '</div>' +
+  '</a>';
+}
+
+function jobRowHTML(job) {
+  return '<a class="job-row" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
+    '<span class="jr-title">' + esc(job.title) + '</span>' +
+    '<span class="jr-meta">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</span>' +
+    '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
+    '<span class="badge source">' + esc(job.source) + '</span>' +
+    '<span class="jr-date">' + esc(job.date) + '</span>' +
+  '</a>';
+}
+
+const newTodayGrid = document.getElementById("new-today-grid");
+const newTodayEmpty = document.getElementById("new-today-empty");
+if (TODAY_JOBS.length === 0) {
+  newTodayEmpty.style.display = "block";
+} else {
+  newTodayGrid.innerHTML = TODAY_JOBS.map(jobCardHTML).join("");
+}
+
+const allList = document.getElementById("all-jobs-list");
+const allEmpty = document.getElementById("all-jobs-empty");
+const searchInput = document.getElementById("search");
+const tabButtons = document.querySelectorAll(".tab-btn");
+let activeCat = "all";
+
+function render() {
+  const q = searchInput.value.trim().toLowerCase();
+  const filtered = ALL_JOBS.filter(function (job) {
+    if (activeCat !== "all" && job.category !== activeCat) return false;
+    if (!q) return true;
+    const hay = (job.title + " " + job.company + " " + job.location).toLowerCase();
+    return hay.indexOf(q) !== -1;
+  });
+  if (filtered.length === 0) {
+    allList.innerHTML = "";
+    allEmpty.style.display = "block";
+  } else {
+    allEmpty.style.display = "none";
+    allList.innerHTML = filtered.map(jobRowHTML).join("");
+  }
+}
+
+searchInput.addEventListener("input", render);
+tabButtons.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    tabButtons.forEach(function (b) { b.classList.remove("active"); });
+    btn.classList.add("active");
+    activeCat = btn.getAttribute("data-cat");
+    render();
+  });
+});
+
+render();
+</script>
