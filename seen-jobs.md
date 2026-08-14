@@ -19,3 +19,15 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 | GitHub issues | ok | 0 open issues/leads. |
 
 New postings logged: 0. Rejected: 0. Candidates reviewed and excluded: 4 (stale or unverifiable, see LinkedIn notes above).
+
+## Run log — 2026-08-14 (run 3)
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | ~15 candidates reviewed across delivery-manager, test/QA-manager, program-manager (pension/retirement), technical-PM, PMO, and Coforge/WNS/eClerx-targeted queries. 0 new: illumifin Senior Delivery Manager, illumifin QA Manager, and Visara Partners Senior Delivery Manager are already-logged duplicates; Digit Life Insurance Delivery Manager, Attrabit Guidewire Delivery Manager (P&C), Star Health Technical Project Manager, and Coforge P&C Insurance Project Manager (2 separate postings, Noida and Sadar) are outside the 30-day recency window (post dates Feb-May 2026 per listing); remaining results were aggregator/category pages ("1,000+ X jobs in India") with no individual posting to evaluate. |
+| Jobaaj (WebSearch) | ok | Candidates returned (Life Insurance Operations Manager, Associate Director - Product Owner, Branch Manager, Case Manager, Senior QA Manager (BPO)) don't match the PM/Delivery or QA/Quality-management title buckets in §2. 0 new. |
+| Naukri (WebSearch) | ok | Only aggregator/category pages and off-category listings (Branch/Agency/Sales Manager, life insurance sales) returned; one aggregator page ("1285 Senior Project Manager Delivery Manager Insurance...") had no individual postings to click through. 0 new. |
+| Indeed (WebSearch) | ok | Only aggregator/category pages returned for QA/Test Manager + insurance and P&C project manager queries, plus off-category results (P&C Insurance Business Analyst, generic GRC Project Manager, Insurance Product Manager). 0 new. |
+| GitHub issues | ok | 0 open issues/leads. |
+
+New postings logged: 0. Rejected: 0. Candidates reviewed and excluded: 7 (stale/outside recency window or off-category, see LinkedIn/Jobaaj notes above).
