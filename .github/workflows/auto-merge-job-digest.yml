@@ -4,6 +4,9 @@ name: Auto-merge job digest PR
 # GitHub Pages rebuilds without waiting on a manual merge. Scoped tightly:
 # only fires for PRs from claude/pensive-hypatia-a4njmp into master, and
 # only merges if the diff touches nothing but the digest's own two files.
+# The per-run "Run log" (see docs/SCOUT.md) is appended inside seen-jobs.md
+# itself, not a separate file, so it's already covered by the seen-jobs.md
+# entry below — no separate allowlist entry needed for it.
 on:
   pull_request:
     types: [opened, synchronize]
