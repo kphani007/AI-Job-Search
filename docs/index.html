@@ -126,8 +126,8 @@ footer { color: var(--text-muted); font-size: 0.78rem; text-align: center; margi
       <span>Last updated: 14 Aug 2026, 09:15 AM IST</span>
     </div>
     <div class="stat-strip">
-      <div class="stat-tile"><div class="num">5</div><div class="label">Total jobs tracked</div></div>
-      <div class="stat-tile"><div class="num">0</div><div class="label">Added today</div></div>
+      <div class="stat-tile"><div class="num" id="stat-total"></div><div class="label">Total jobs tracked</div></div>
+      <div class="stat-tile"><div class="num" id="stat-today"></div><div class="label">Added today</div></div>
     </div>
   </header>
 
@@ -191,6 +191,9 @@ function jobRowHTML(job) {
     '<span class="jr-date">' + esc(job.date) + '</span>' +
   '</a>';
 }
+
+document.getElementById("stat-total").textContent = ALL_JOBS.length;
+document.getElementById("stat-today").textContent = TODAY_JOBS.length;
 
 const newTodayGrid = document.getElementById("new-today-grid");
 const newTodayEmpty = document.getElementById("new-today-empty");
