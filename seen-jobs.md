@@ -12,11 +12,12 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 Format: | Date Found | Title | Company | Location | Source | URL | Reason Unverified |
 |---|---|---|---|---|---|---|
 | 2026-08-15 | Project Manager, Digital Assets | DriveWealth | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/drivewealth/jobs/7815741003 | no post date shown in listing/search snippet |
-| 2026-08-15 | Fintech Project Manager | Inpay | Not stated in listing | Lever | https://jobs.lever.co/inpay-2/079c90c8-1c90-4fcc-9ce2-4316ae0860e1 | no post date shown in listing/search snippet |
-| 2026-08-15 | Project Manager (Fintech) | Xsolla | Not stated in listing | Lever | https://jobs.lever.co/xsolla/dd574319-941d-41f5-92c2-360cca4317a4 | no post date shown in listing/search snippet |
-| 2026-08-15 | Project Manager, Internal Processes (Fintech) | Xsolla | Not stated in listing | Lever | https://jobs.lever.co/xsolla/fe92ca08-2a5a-42b8-bb9e-ef61e61421b7 | no post date shown in listing/search snippet |
 | 2026-08-15 | TSYS QA | Virtusa | Chennai, Tamil Nadu | Jobaaj | https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193 | no post date shown in listing/search snippet |
 | 2026-08-15 | Automation QA - Treasury, FX | CITI | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225 | no post date shown in listing/search snippet |
+
+## Freelancing Leads
+Format: | Date Found | Title | Client/Company | Location | Source | URL |
+|---|---|---|---|---|---|
 
 ## Run log — 2026-08-14 (run 2)
 
@@ -59,3 +60,10 @@ First run under the broadened §2-§6 rules (BFSI/lending scope, IC-level roles,
 | GitHub issues | ok | 0 open issues/leads. |
 
 New postings logged: 0. Unverified leads logged: 6 (see Unverified Leads table above). Rejected: 0.
+
+**Addendum (2026-08-15, same day):** the 3 Lever-sourced Unverified Leads
+above (Inpay Fintech PM, Xsolla PM ×2) were removed after the user found the
+Inpay URL 404s ("the job posting you're looking for might have closed, or it
+has been removed"). Lever was dropped as a source entirely — see the removal
+note in `docs/SCOUT.md` §4. The Greenhouse and Jobaaj leads in this run's
+Unverified Leads table are unaffected.
