@@ -14,6 +14,11 @@ Format: | Date Found | Title | Company | Location | Source | URL | Reason Unveri
 | 2026-08-15 | Project Manager, Digital Assets | DriveWealth | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/drivewealth/jobs/7815741003 | no post date shown in listing/search snippet |
 | 2026-08-15 | TSYS QA | Virtusa | Chennai, Tamil Nadu | Jobaaj | https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193 | no post date shown in listing/search snippet |
 | 2026-08-15 | Automation QA - Treasury, FX | CITI | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225 | no post date shown in listing/search snippet |
+| 2026-08-15 | Project Manager | IndusInd Bank | Mumbai, Maharashtra | Jobaaj | https://www.jobaaj.com/job/indusind-bank-project-manager-mumbai-maharashtra-0-to-1-years-1100433 | no post date shown in listing/search snippet |
+| 2026-08-15 | Quality Assurance Specialist | Onbe | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/onbe/jobs/4599466006 | no post date shown in listing/search snippet |
+| 2026-08-15 | QA Engineer | OneVest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/onevest/jobs/5388949008 | no post date shown in listing/search snippet |
+| 2026-08-15 | QA Engineer (Core Integrations - Banks) | Amount | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/5057917007 | no post date shown in listing/search snippet |
+| 2026-08-15 | Head of Quality Engineering | Amount | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/4416565007 | no post date shown in listing/search snippet |
 
 ## Freelancing Leads
 Format: | Date Found | Title | Client/Company | Location | Source | URL |
@@ -67,3 +72,25 @@ Inpay URL 404s ("the job posting you're looking for might have closed, or it
 has been removed"). Lever was dropped as a source entirely — see the removal
 note in `docs/SCOUT.md` §4. The Greenhouse and Jobaaj leads in this run's
 Unverified Leads table are unaffected.
+
+## Run log — 2026-08-15 (run 2)
+
+Second run today. First to query the Freelancing widget sources (§14) alongside the main list, and first run since Lever was dropped as a source (§4) — confirmed no Lever queries below. Keywords rotated from run 1 to avoid re-covering the same ground (new angles: delivery/program manager banking+lending combos, implementation/test manager fintech, QA-focused Greenhouse sweep, QA-focused Glassdoor sweep).
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | 2 queries (delivery/program manager insurance/banking/lending, India; implementation/test manager lending/fintech/insurance, global). 0 new: IBM, JPMorgan (VP — over seniority cap), McCormick (off-sector), and Wipro delivery-manager postings all had LinkedIn job IDs well below the current ~4.44-4.49B range — confirmed-excluded as stale, consistent with the ID-magnitude pattern from prior runs. Second query returned only aggregator/category pages, no individual postings to evaluate. |
+| Jobaaj (WebSearch) | ok | 10 candidates reviewed (project/delivery manager banking/NBFC/lending). 1 on-category/on-sector match with no post date shown (IndusInd Bank — Project Manager, banking) — logged to Unverified Leads. Remainder off-category (Relationship Manager, Business Consulting Senior, Portfolio Manager, Product Manager — not in the PM/Delivery bucket per §2, Branch Manager roles, VP-level Product Implementation — over seniority cap, Loan Processing Manager, Business Analyst — excluded per §5). |
+| Naukri (WebSearch) | ok | Only aggregator/category and recruiter-directory pages returned (QA manager banking/insurance/NBFC query), no individual postings to evaluate. 0 new. |
+| Indeed (WebSearch) | ok | Only aggregator/category pages returned in the Links list; postings referenced only in narrative summary (e.g. SavvyMoney Technical Program Manager) had no URL to verify/log. 0 new. |
+| Greenhouse (WebSearch) | ok | QA-focused sweep (insurtech/lending/fintech). 4 on-category/on-sector matches with no post date shown — logged to Unverified Leads: Onbe (QA Specialist, fintech payouts), OneVest (QA Engineer, fintech/wealth mgmt), Amount ×2 (QA Engineer – Core Integrations/Banks, and Head of Quality Engineering — both lending/account-origination fintech). xAI (QA Engineer, "X Money") excluded as ambiguous sector fit — xAI is primarily an AI company and the fintech/payments signal for "X Money" wasn't strong enough to confirm per §3. |
+| Wellfound (WebSearch) | skipped | Covered in run 1 today; skipped this run to prioritize the new Freelancing sources instead, per §4's "rotate across the week, not every source every run" guidance. |
+| Glassdoor (WebSearch) | ok | QA/test manager banking/fintech/insurance query. Only aggregator, salary, and category pages returned; one narrative-only mention (Chennai fintech Senior QA Engineer) had no URL to log. 0 new. |
+| GitHub issues | ok | 0 open issues/leads. |
+| Upwork (WebSearch, Freelancing §14) | ok | 2 queries (PM freelance; QA tester/software tester freelance). 1 individual posting found ("AI Driven Project Manager" freelance job) — excluded per §14: no post date shown and the widget has no unverified bucket to fall back to, so an unconfirmable date means skip, not log. Remainder were category/landing pages ("Remote Project Manager Freelance Jobs", "QA Tester Freelance Jobs", etc.), not individual postings. |
+| Freelancer.com (WebSearch, Freelancing §14) | ok | Only category/landing pages returned (Project Management Jobs hub, PMP jobs hub, etc.), no individual postings to evaluate. 0 new. |
+| Toptal (WebSearch, Freelancing §14) | ok | Only talent-directory and category pages returned ("Hire Freelance Project Managers", "Remote Freelance QA Tester Jobs" hub), no individual postings to evaluate. 0 new. |
+| PeoplePerHour (WebSearch, Freelancing §14) | ok | 1 individual posting found ("Freelance QA Tester Needed for Comprehensive Platform Testing") — excluded per §14: no post date shown, same unconfirmable-date rule as the Upwork PM lead above. Remainder were category pages (game/beta tester listings, freelancer profile). |
+| Guru (WebSearch, Freelancing §14) | ok | Only category/hire-a-freelancer landing pages returned, no individual postings to evaluate. 0 new. |
+
+New postings logged: 0. Unverified leads logged: 5 (see Unverified Leads table above). Freelancing leads logged: 0 (2 individual postings found but excluded — post date unconfirmable, see Upwork/PeoplePerHour notes). Rejected: 0.
