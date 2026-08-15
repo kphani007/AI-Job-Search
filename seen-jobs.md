@@ -8,6 +8,16 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 | 2026-08-11 | Senior Software Delivery Manager - Life Insurance | Visara Partners | Bengaluru, Karnataka | LinkedIn | https://in.linkedin.com/jobs/view/senior-software-delivery-manager-life-insurance-at-visara-partners-4449559557 | New |
 | 2026-08-11 | Manager - Quality Management | Allianz Technology | Pune, Maharashtra | Jobaaj (LinkedIn-sourced) | https://www.jobaaj.com/job/allianz-technology-manager-quality-management-pune-maharashtra-7-to-9-years-654223 | Rejected - stale posting (actual post date 1 year ago per jobaaj.com, not within recency window; see issue #5) |
 
+## Unverified Leads
+Format: | Date Found | Title | Company | Location | Source | URL | Reason Unverified |
+|---|---|---|---|---|---|---|
+| 2026-08-15 | Project Manager, Digital Assets | DriveWealth | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/drivewealth/jobs/7815741003 | no post date shown in listing/search snippet |
+| 2026-08-15 | Fintech Project Manager | Inpay | Not stated in listing | Lever | https://jobs.lever.co/inpay-2/079c90c8-1c90-4fcc-9ce2-4316ae0860e1 | no post date shown in listing/search snippet |
+| 2026-08-15 | Project Manager (Fintech) | Xsolla | Not stated in listing | Lever | https://jobs.lever.co/xsolla/dd574319-941d-41f5-92c2-360cca4317a4 | no post date shown in listing/search snippet |
+| 2026-08-15 | Project Manager, Internal Processes (Fintech) | Xsolla | Not stated in listing | Lever | https://jobs.lever.co/xsolla/fe92ca08-2a5a-42b8-bb9e-ef61e61421b7 | no post date shown in listing/search snippet |
+| 2026-08-15 | TSYS QA | Virtusa | Chennai, Tamil Nadu | Jobaaj | https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193 | no post date shown in listing/search snippet |
+| 2026-08-15 | Automation QA - Treasury, FX | CITI | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225 | no post date shown in listing/search snippet |
+
 ## Run log — 2026-08-14 (run 2)
 
 | Source | Result | Notes |
@@ -31,3 +41,21 @@ New postings logged: 0. Rejected: 0. Candidates reviewed and excluded: 4 (stale 
 | GitHub issues | ok | 0 open issues/leads. |
 
 New postings logged: 0. Rejected: 0. Candidates reviewed and excluded: 7 (stale/outside recency window or off-category, see LinkedIn/Jobaaj notes above).
+
+## Run log — 2026-08-15
+
+First run under the broadened §2-§6 rules (BFSI/lending scope, IC-level roles, global geography, 3-day recency window, Unverified Leads bucket). Reflected in source coverage below: added Greenhouse, Lever, Wellfound, Glassdoor per §4.
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | ~25 candidates reviewed across PM/Delivery (incl. IC-level: project coordinator, delivery lead), QA (incl. IC-level: QA/test analyst), and pension/retirement queries, global scope. 0 new to main list: on-category/on-sector individual postings found (Alogent PM, CoverGo PM, EvolutionIQ Program Mgr, Perficient Delivery Lead BFSI, BofA QA Analyst x2, eTeam QA Analyst, ATB Financial Test Analyst, Capita Pensions Project Data Analyst, Assurant QA Analyst) all had LinkedIn job IDs far below the ~4.44-4.49B range seen on current Aug 2026 postings, consistent with the ID-magnitude staleness pattern used in prior runs — confirmed-excluded as outside the (now much tighter) 3-day window, not merely unverified. 1199SEIU Manager QA (pension-fund sector, on-category) was flagged "posted 3 weeks ago" — also confirmed-excluded. Remainder were off-category (BFSI Analyst-style generalist titles, Pension Systems Configuration Analyst, Sustainability Risk Analyst) or off-sector (Resources for Human Development) or aggregator/category pages. |
+| Jobaaj (WebSearch) | ok | 2 on-category/on-sector matches (Virtusa TSYS QA — payments/BFSI; CITI Automation QA Treasury/FX — banking) had no post date in the listing or search snippet — logged to Unverified Leads rather than guessed as New. Remainder off-category (BFSI Analyst, Associate Director ESG, Transaction Monitoring/AML Analyst, Lead - BFS Direct). |
+| Naukri (WebSearch) | ok | Only aggregator/category pages returned (e.g. "Project Manager Banking Domain Jobs"), no individual postings to evaluate. 0 new. |
+| Indeed (WebSearch) | ok | Only aggregator/category pages returned across US/UK/Canada/India domains for fintech/insurtech/loan-management queries. 0 new. |
+| Greenhouse (WebSearch) | ok | 1 on-category/on-sector match (DriveWealth — Project Manager, Digital Assets; fintech/investing infrastructure) with no post date shown — logged to Unverified Leads. Remainder off-category (Account Director, Product Manager, Finance Manager, Technical Solution Lead, Senior Strategic Account Manager). |
+| Lever (WebSearch) | ok | 3 on-category/on-sector matches (Inpay Fintech PM; Xsolla PM ×2, fintech) with no post date shown — logged to Unverified Leads. Remainder off-category/off-sector (Growth Management Manager, Senior Financial Analyst, Customer Success Manager, gaming-fund PM). |
+| Wellfound (WebSearch) | ok | Only company-list/collection pages and one off-category individual posting (Fintech Platform Product Director) returned. 0 new. |
+| Glassdoor (WebSearch) | ok | Only aggregator/category pages returned for fintech/banking/insurance PM and delivery-manager queries, no individual postings to evaluate. 0 new. |
+| GitHub issues | ok | 0 open issues/leads. |
+
+New postings logged: 0. Unverified leads logged: 6 (see Unverified Leads table above). Rejected: 0.
