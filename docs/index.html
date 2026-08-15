@@ -19,6 +19,8 @@
   --new-badge-soft: #e3faf0;
   --warn-color: #b45309;
   --warn-soft: #fef3c7;
+  --freelance-color: #0f766e;
+  --freelance-soft: #ccfbf1;
   --shadow: 0 1px 2px rgba(20,20,40,0.04), 0 4px 14px rgba(20,20,40,0.05);
 }
 @media (prefers-color-scheme: dark) {
@@ -38,6 +40,8 @@
     --new-badge-soft: #103426;
     --warn-color: #fbbf24;
     --warn-soft: #453411;
+    --freelance-color: #5eead4;
+    --freelance-soft: #0f2e2a;
     --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 4px 14px rgba(0,0,0,0.35);
   }
 }
@@ -109,6 +113,7 @@ h2 { font-size: 1.05rem; margin: 0 0 12px; }
 .badge.new { background: var(--new-badge-soft); color: var(--new-badge); }
 .badge.source { background: var(--accent-soft); color: var(--text-muted); }
 .badge.unverified { background: var(--warn-soft); color: var(--warn-color); }
+.badge.freelance { background: var(--freelance-soft); color: var(--freelance-color); }
 
 .job-list { display: flex; flex-direction: column; gap: 10px; }
 .job-row {
@@ -122,6 +127,7 @@ h2 { font-size: 1.05rem; margin: 0 0 12px; }
 .job-row .jr-date { color: var(--text-muted); font-size: 0.78rem; margin-left: auto; }
 .job-row.unverified { border-left: 3px solid var(--warn-color); }
 .job-row .jr-reason { flex-basis: 100%; color: var(--warn-color); font-size: 0.78rem; }
+.job-row.freelance { border-left: 3px solid var(--freelance-color); }
 .section-hint { color: var(--text-muted); font-weight: 400; font-size: 0.82rem; }
 
 footer { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 30px; }
@@ -131,12 +137,13 @@ footer { color: var(--text-muted); font-size: 0.78rem; text-align: center; margi
   <header>
     <h1>Job Watch</h1>
     <div class="meta-row">
-      <span>Last updated: 15 Aug 2026, 05:19 PM IST</span>
+      <span>Last updated: 15 Aug 2026, 05:31 PM IST</span>
     </div>
     <div class="stat-strip">
       <div class="stat-tile"><div class="num" id="stat-total"></div><div class="label">Total jobs tracked</div></div>
       <div class="stat-tile"><div class="num" id="stat-today"></div><div class="label">Added today</div></div>
       <div class="stat-tile"><div class="num" id="stat-unverified"></div><div class="label">Unverified leads</div></div>
+      <div class="stat-tile"><div class="num" id="stat-freelance"></div><div class="label">Freelance gigs</div></div>
     </div>
   </header>
 
@@ -167,13 +174,20 @@ footer { color: var(--text-muted); font-size: 0.78rem; text-align: center; margi
     <div id="unverified-empty" class="empty-note" style="display:none;">No unverified leads right now.</div>
   </section>
 
+  <section>
+    <h2>Freelancing <span class="section-hint">&mdash; contract/freelance Testing &amp; PM gigs, any domain, last 15 days</span></h2>
+    <div id="freelance-list" class="job-list"></div>
+    <div id="freelance-empty" class="empty-note" style="display:none;">No freelance leads right now.</div>
+  </section>
+
   <footer>Job Watch &middot; auto-generated daily &middot; data sourced from public job listings</footer>
 </div>
 
 <script>
 const ALL_JOBS = [{"date": "2026-08-11", "title": "Senior Software Delivery Manager - Life Insurance", "company": "Visara Partners", "location": "Bengaluru, Karnataka", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/senior-software-delivery-manager-life-insurance-at-visara-partners-4449559557", "status": "New", "category": "pm"}, {"date": "2026-08-10", "title": "Associate Project Manager", "company": "eClerx", "location": "Pune, Maharashtra", "source": "LinkedIn (GitHub issue lead)", "url": "https://www.linkedin.com/jobs/view/4367307316/", "status": "New", "category": "pm"}, {"date": "2026-08-10", "title": "Quality Assurance Manager - US Life Insurance Domain", "company": "illumifin India", "location": "Pune City, Maharashtra", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/illumifin-quality-assurance-manager-us-life-insurance-domain-at-illumifin-india-4447220709", "status": "New", "category": "qa"}, {"date": "2026-08-07", "title": "Senior Delivery Manager - Life Insurance Domain", "company": "illumifin India", "location": "Pune City, Maharashtra", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/illumifin-senior-delivery-manager-life-insurance-domain-at-illumifin-india-4447227678", "status": "New", "category": "pm"}, {"date": "2026-08-07", "title": "Technical Project Manager (P&C Insurance Domain, BPM, Workflow Automation Platforms)", "company": "Prasha Consultancy Services Private Limited", "location": "India (city not stated)", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/technical-project-manager-p-c-insurance-domain-bpm-workflow-automation-platforms-at-prasha-consultancy-services-private-limited-4446047992", "status": "New", "category": "pm"}];
 const TODAY_JOBS = [];
-const UNVERIFIED_JOBS = [{"date": "2026-08-15", "title": "Project Manager, Digital Assets", "company": "DriveWealth", "location": "Not stated in listing", "source": "Greenhouse", "url": "https://job-boards.greenhouse.io/drivewealth/jobs/7815741003", "reason": "no post date shown in listing/search snippet", "category": "pm"}, {"date": "2026-08-15", "title": "Fintech Project Manager", "company": "Inpay", "location": "Not stated in listing", "source": "Lever", "url": "https://jobs.lever.co/inpay-2/079c90c8-1c90-4fcc-9ce2-4316ae0860e1", "reason": "no post date shown in listing/search snippet", "category": "pm"}, {"date": "2026-08-15", "title": "Project Manager (Fintech)", "company": "Xsolla", "location": "Not stated in listing", "source": "Lever", "url": "https://jobs.lever.co/xsolla/dd574319-941d-41f5-92c2-360cca4317a4", "reason": "no post date shown in listing/search snippet", "category": "pm"}, {"date": "2026-08-15", "title": "Project Manager, Internal Processes (Fintech)", "company": "Xsolla", "location": "Not stated in listing", "source": "Lever", "url": "https://jobs.lever.co/xsolla/fe92ca08-2a5a-42b8-bb9e-ef61e61421b7", "reason": "no post date shown in listing/search snippet", "category": "pm"}, {"date": "2026-08-15", "title": "TSYS QA", "company": "Virtusa", "location": "Chennai, Tamil Nadu", "source": "Jobaaj", "url": "https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193", "reason": "no post date shown in listing/search snippet", "category": "qa"}, {"date": "2026-08-15", "title": "Automation QA - Treasury, FX", "company": "CITI", "location": "Pune, Maharashtra", "source": "Jobaaj", "url": "https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225", "reason": "no post date shown in listing/search snippet", "category": "qa"}];
+const UNVERIFIED_JOBS = [{"date": "2026-08-15", "title": "Project Manager, Digital Assets", "company": "DriveWealth", "location": "Not stated in listing", "source": "Greenhouse", "url": "https://job-boards.greenhouse.io/drivewealth/jobs/7815741003", "reason": "no post date shown in listing/search snippet", "category": "pm"}, {"date": "2026-08-15", "title": "TSYS QA", "company": "Virtusa", "location": "Chennai, Tamil Nadu", "source": "Jobaaj", "url": "https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193", "reason": "no post date shown in listing/search snippet", "category": "qa"}, {"date": "2026-08-15", "title": "Automation QA - Treasury, FX", "company": "CITI", "location": "Pune, Maharashtra", "source": "Jobaaj", "url": "https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225", "reason": "no post date shown in listing/search snippet", "category": "qa"}];
+const FREELANCE_JOBS = [];
 
 function catLabel(cat) {
   if (cat === "pm") return "PM/Delivery";
@@ -220,9 +234,21 @@ function unverifiedRowHTML(job) {
   '</a>';
 }
 
+function freelanceRowHTML(job) {
+  return '<a class="job-row freelance" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
+    '<span class="jr-title">' + esc(job.title) + '</span>' +
+    '<span class="jr-meta">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</span>' +
+    '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
+    '<span class="badge source">' + esc(job.source) + '</span>' +
+    '<span class="badge freelance">Freelance</span>' +
+    '<span class="jr-date">' + esc(job.date) + '</span>' +
+  '</a>';
+}
+
 document.getElementById("stat-total").textContent = ALL_JOBS.length;
 document.getElementById("stat-today").textContent = TODAY_JOBS.length;
 document.getElementById("stat-unverified").textContent = UNVERIFIED_JOBS.length;
+document.getElementById("stat-freelance").textContent = FREELANCE_JOBS.length;
 
 const unverifiedList = document.getElementById("unverified-list");
 const unverifiedEmpty = document.getElementById("unverified-empty");
@@ -230,6 +256,14 @@ if (UNVERIFIED_JOBS.length === 0) {
   unverifiedEmpty.style.display = "block";
 } else {
   unverifiedList.innerHTML = UNVERIFIED_JOBS.map(unverifiedRowHTML).join("");
+}
+
+const freelanceList = document.getElementById("freelance-list");
+const freelanceEmpty = document.getElementById("freelance-empty");
+if (FREELANCE_JOBS.length === 0) {
+  freelanceEmpty.style.display = "block";
+} else {
+  freelanceList.innerHTML = FREELANCE_JOBS.map(freelanceRowHTML).join("");
 }
 
 const newTodayGrid = document.getElementById("new-today-grid");

@@ -76,7 +76,7 @@ run. Empty for now.
 ## 4. Sources
 
 WebFetch to job-board domains (linkedin.com, jobaaj.com, naukri.com,
-indeed.com, greenhouse.io, lever.co, etc.) is blocked by this environment's
+indeed.com, greenhouse.io, etc.) is blocked by this environment's
 network egress policy — confirmed for every job-board domain tested on
 2026-08-14 (see §7). **Do not rely on WebFetch for job boards.** Use the
 `WebSearch` tool with a `site:<domain>` filter instead — confirmed working
@@ -91,13 +91,25 @@ fetching the page body.
 | 3 | Naukri (secondary, India-focused) | `WebSearch`, `site:naukri.com` | `site:naukri.com delivery manager banking OR insurance` |
 | 4 | Indeed (secondary, global) | `WebSearch`, `site:indeed.com`, `site:in.indeed.com`, or other country domains (`site:uk.indeed.com`, etc.) as needed | `site:in.indeed.com project manager insurance` |
 | 5 | Greenhouse job boards (secondary, global — added 2026-08-14) | `WebSearch`, `site:boards.greenhouse.io` or `site:job-boards.greenhouse.io` | `site:boards.greenhouse.io project manager insurtech OR lending` |
-| 6 | Lever job boards (secondary, global — added 2026-08-14) | `WebSearch`, `site:jobs.lever.co` | `site:jobs.lever.co project manager fintech OR insurtech` |
-| 7 | Wellfound/AngelList (secondary, startup-focused — added 2026-08-14) | `WebSearch`, `site:wellfound.com` | `site:wellfound.com project manager insurtech OR fintech` |
-| 8 | Glassdoor (opportunistic — added 2026-08-14) | `WebSearch`, `site:glassdoor.com` or `site:glassdoor.co.in` | `site:glassdoor.co.in project manager banking` |
-| 9 | Target employer career pages (optional, see §3) | `WebSearch`, `site:<employer-domain>/careers` | — |
-| 10 | GitHub issues on this repo (manual leads) | `mcp__github__list_issues` (state OPEN) on `kphani007/AI-Job-Search` | — |
+| 6 | Wellfound/AngelList (secondary, startup-focused — added 2026-08-14) | `WebSearch`, `site:wellfound.com` | `site:wellfound.com project manager insurtech OR fintech` |
+| 7 | Glassdoor (opportunistic — added 2026-08-14) | `WebSearch`, `site:glassdoor.com` or `site:glassdoor.co.in` | `site:glassdoor.co.in project manager banking` |
+| 8 | Target employer career pages (optional, see §3) | `WebSearch`, `site:<employer-domain>/careers` | — |
+| 9 | GitHub issues on this repo (manual leads) | `mcp__github__list_issues` (state OPEN) on `kphani007/AI-Job-Search` | — |
 
-Run at least sources 1 and 10 every day; run the rest as supplementary
+**Lever job boards (`jobs.lever.co`) — removed 2026-08-15.** Lever was a
+source from 2026-08-14 to 2026-08-15. Dropped per direct user feedback:
+`WebSearch` surfaced live-looking Lever URLs (e.g. the Inpay Fintech Project
+Manager posting logged to Unverified Leads on 2026-08-15), but clicking
+through returned a 404 ("The job posting you're looking for might have
+closed, or it has been removed") within a day of being surfaced — Lever
+listings expire/get pulled faster than `WebSearch`'s index catches up, so
+the source can't be trusted to link to a live posting. Do not re-add
+`site:jobs.lever.co` as a source unless a future run finds a reliable way to
+confirm a Lever URL is still live before logging it (e.g. if `WebFetch` to
+lever.co ever becomes unblocked, verify before logging rather than trusting
+the search snippet).
+
+Run at least sources 1 and 9 every day; run the rest as supplementary
 sweeps to widen coverage — you don't have to exhaust every source every
 single run, but rotate through all of them across the week rather than
 always skipping the same ones. Rotate/vary the exact query keywords
@@ -105,12 +117,12 @@ run-to-run (role terms × sector terms, including the new IC-level and
 BFSI/lending terms from §2–3) rather than repeating one fixed query, to
 surface postings a single fixed query would miss.
 
-Sources 5–7 were spot-checked on 2026-08-14 and confirmed to return
+Sources 5–6 were spot-checked on 2026-08-14 and confirmed to return
 individual, relevant postings via `WebSearch` (e.g. Greenhouse boards for
-Kin Insurance, LendingTree, Pie Insurance; Lever boards for fintech/insurtech
-PM roles) — see §7 for the reachability table.
+Kin Insurance, LendingTree, Pie Insurance) — see §7 for the reachability
+table.
 
-Source 10 exists because the user sometimes files a GitHub issue with a job
+Source 9 exists because the user sometimes files a GitHub issue with a job
 lead they found manually (e.g. issues #2, #5 in this repo's history). Treat
 each open issue as a candidate lead: extract title/company/URL from the issue
 body, log it with `Source: <original source> (GitHub issue lead)`, and note
@@ -178,7 +190,8 @@ Tested directly against this session:
 | jobaaj.com | **BLOCKED** | Works |
 | naukri.com | **BLOCKED** | Works |
 | indeed.com / in.indeed.com | **BLOCKED** | Works |
-| job-boards.greenhouse.io, jobs.lever.co | **BLOCKED** | Works |
+| job-boards.greenhouse.io | **BLOCKED** | Works |
+| jobs.lever.co | **BLOCKED** | Works, but see the removal note in §4 — `WebSearch` results go stale/404 fast, dropped as a source 2026-08-15 |
 | wellfound.com | not re-tested via WebFetch (assume blocked, same pattern) | Works |
 | www.google.com, example.com, docs.anthropic.com | **BLOCKED** | n/a |
 | raw.githubusercontent.com, GitHub API/MCP tools | Works | n/a |
@@ -331,6 +344,13 @@ blocked — see run log)"`), matching the pattern already used in commit
     scoped to confirmed `New` postings only. If a lead is later moved from
     Unverified Leads to the main table per §8, it moves from
     `UNVERIFIED_JOBS` to `ALL_JOBS` on the next run the same way.
+1b. Rebuild the `FREELANCE_JOBS` JS array from every row in the Freelancing
+    Leads table (§14), in the same order they appear there. Each entry:
+    `{"date": "<Date Found>", "title", "company", "location", "source",
+    "url", "category": "pm"|"qa"}`. Shown on the dashboard in its own
+    "Freelancing" section (added 2026-08-15 alongside step 1a) — teal
+    "Freelance" badge and left-border accent, own "Freelance gigs" stat
+    tile, independent of `ALL_JOBS`/`UNVERIFIED_JOBS` and their stats.
 2. Rebuild `TODAY_JOBS` as the subset of `ALL_JOBS` whose `date` equals
    today's run date.
 3. Update the `Last updated:` timestamp in the `.meta-row` to the current
@@ -338,16 +358,17 @@ blocked — see run log)"`), matching the pattern already used in commit
    `14 Aug 2026, 09:15 AM IST`).
 4. **Do not hand-write the stat-tile numbers.** They must be computed by the
    page's own script from `ALL_JOBS.length` / `TODAY_JOBS.length` /
-   `UNVERIFIED_JOBS.length` so the displayed counts can never drift out of
-   sync with the actual job list — that drift was the root cause of the "5
-   tracked but list empty" dashboard bug. If you're hand-editing the HTML
-   instead of regenerating it wholesale, do not touch the stat tile markup
-   at all.
+   `UNVERIFIED_JOBS.length` / `FREELANCE_JOBS.length` so the displayed
+   counts can never drift out of sync with the actual job list — that drift
+   was the root cause of the "5 tracked but list empty" dashboard bug. If
+   you're hand-editing the HTML instead of regenerating it wholesale, do not
+   touch the stat tile markup at all.
 5. Everything else in the file (styles, controls, filter/search JS) is
    static scaffolding — leave it as-is unless explicitly asked to change the
    UI. The search/tab filter controls apply to `ALL_JOBS` only — the
-   Unverified Leads section is not wired to them (small, review-queue-sized
-   list; add filtering later only if it grows enough to need it).
+   Unverified Leads and Freelancing sections are not wired to them (small,
+   review-queue-sized lists; add filtering later only if either grows enough
+   to need it).
 
 ## 12. When a source is unreachable
 
@@ -386,9 +407,88 @@ Suggestions surfaced 2026-08-14, not implemented until the user picks them:
   if non-India geographies matter as much as India.
 - **Naukri sibling sites** (Foundit/Monster India, Shine, Instahyre) and
   **Glassdoor** — Glassdoor already showed up organically in a test search
-  (§4 source 8); the others haven't been spot-checked yet but are likely
+  (§4 source 7); the others haven't been spot-checked yet but are likely
   reachable the same way (`WebSearch` + `site:`).
 
 None of these are required — they're options if the current source/role/
 sector breadth still isn't surfacing enough. Update this section (or delete
 it) once a decision is made.
+
+## 14. Freelancing widget (added 2026-08-15)
+
+Separate from the BFSI/InsurTech/lending/retirement scope in §1–§3. This
+widget tracks contract/freelance **Testing (QA)** and **Project/Program/
+Delivery Management** gigs, **any domain or sector** — sourced from
+freelance marketplaces rather than the standard job boards in §4.
+
+### Role scope
+
+Same two title buckets as §2 (PM/Delivery, QA/Quality — including the
+IC-level titles), same seniority range (IC/Analyst through Senior
+Manager/Director). **No domain/sector filter applies here** — a freelance
+PM or QA gig in retail, media, travel, or any other unrelated industry is
+in scope for this widget even though it would be out of scope for the main
+list and Unverified Leads (§2–§3 still gate those).
+
+### Contract-type signal required
+
+The posting must show a freelance/contract/gig signal: either sourced from
+a freelance-specific marketplace (see Sources below), or — if surfaced from
+a general board — the listing itself says "contract", "freelance",
+"remote — contract", or similar. A permanent/full-time role does not
+qualify for this widget even if found on a freelance-adjacent site; if it
+also matches §2–§3, log it to the main list/Unverified Leads instead, not
+here.
+
+### Sources
+
+Use `WebSearch` with `site:` filters, same `WebFetch`-blocked caveat as
+§4/§7. **Do not use `jobs.lever.co`** for this widget either — see the
+Lever removal note in §4 (dead/expired listings within days of being
+surfaced by `WebSearch`), which applies regardless of which list a Lever
+posting would be destined for.
+
+| # | Source | Example query |
+|---|---|---|
+| 1 | Upwork | `site:upwork.com project manager OR QA testing freelance` |
+| 2 | Freelancer.com | `site:freelancer.com "project manager" OR "QA tester" job` |
+| 3 | Toptal | `site:toptal.com project manager OR QA freelance` |
+| 4 | PeoplePerHour | `site:peopleperhour.com project manager OR QA tester` |
+| 5 | Guru | `site:guru.com project manager OR QA tester freelance` |
+
+Rotate/vary keywords the same way as §4. Record these sources in the same
+run log table as the main sources (§10), using the source names above.
+
+### Recency window
+
+**15 days** — looser than the main list's 3-day window (§6), tighter than
+the original 30-day default. Same "confirmed vs. unconfirmed date" logic as
+§5 applies for judgment calls, but keep this widget simple: **if the post
+date can't be confirmed within 15 days, skip it** — there is no separate
+"unverified freelancing" bucket to fall back to.
+
+### `seen-jobs.md` entry format
+
+Its own table, positioned below the Unverified Leads table (§9), above the
+Run log sections:
+
+```
+## Freelancing Leads
+Format: | Date Found | Title | Client/Company | Location | Source | URL |
+|---|---|---|---|---|---|
+| YYYY-MM-DD | <Title> | <Client/Company> | <Location> | <Source> | <Full URL> |
+```
+
+Same dedupe rule (§8) applies within this table. Also check the main table
+and Unverified Leads before logging here — if the exact same URL or
+(Title, Company) pair already exists in either of those, don't double-log
+it into Freelancing Leads too.
+
+### Dashboard
+
+Per §11, rebuild a `FREELANCE_JOBS` JS array from every row in this table:
+`{"date", "title", "company", "location", "source", "url", "category":
+"pm"|"qa"}` (category recomputed from title, same as `ALL_JOBS`). Shown in
+its own "Freelancing" dashboard section — distinct badge/accent color from
+both `ALL_JOBS` and `UNVERIFIED_JOBS` — with its own stat tile, independent
+of the other two arrays and their stats.
