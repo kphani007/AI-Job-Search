@@ -8,9 +8,11 @@ complete, correct digest from this document alone.
 Reverse-engineered from `seen-jobs.md` and `docs/index.html` history as of
 2026-08-14, then revised 2026-08-14 per direct user feedback (recency window,
 IC-level roles, sector/geography broadening, unverified-leads list, more
-sources — see the diff that introduced this note for the before/after). If
-reality and this document ever disagree, update this document in the same
-PR — don't let the logic drift back into an undocumented prompt.
+sources — see the diff that introduced this note for the before/after), then
+revised again 2026-08-15 (Unverified Leads now shown on the dashboard in
+their own section — see §11 step 1a). If reality and this document ever
+disagree, update this document in the same PR — don't let the logic drift
+back into an undocumented prompt.
 
 ## 1. Goal
 
@@ -311,25 +313,41 @@ blocked — see run log)"`), matching the pattern already used in commit
 
 1. Rebuild the `ALL_JOBS` JS array from every `seen-jobs.md` row whose Status
    is `New` **in the main table only** (exclude `Rejected - *` rows and
-   exclude the entire Unverified Leads table — those are a manual-review
-   queue, not shown on the dashboard, by design). Each entry:
+   exclude the Unverified Leads table — those feed the separate
+   `UNVERIFIED_JOBS` array in step 1a instead). Each entry:
    `{"date": "<Date First Seen>", "title", "company", "location", "source",
    "url", "status": "New", "category": "pm"|"qa"}`. Category comes from §2 —
    recompute it from the title, don't hand-carry it from a previous stat.
+1a. Rebuild the `UNVERIFIED_JOBS` JS array from every row in the Unverified
+    Leads table (§9), in the same order they appear there. Each entry:
+    `{"date": "<Date Found>", "title", "company", "location", "source",
+    "url", "reason": "<Reason Unverified>", "category": "pm"|"qa"}`.
+    Shown on the dashboard in its own "Unverified Leads" section (added
+    2026-08-15 per user request, after the user noticed the leads found on
+    2026-08-15's run weren't visible anywhere on the site) — visually
+    distinct from `ALL_JOBS` (amber "Unverified" badge, left-border accent,
+    reason text shown on the row) and counted in its own "Unverified leads"
+    stat tile, separate from "Total jobs tracked" / "Added today" which stay
+    scoped to confirmed `New` postings only. If a lead is later moved from
+    Unverified Leads to the main table per §8, it moves from
+    `UNVERIFIED_JOBS` to `ALL_JOBS` on the next run the same way.
 2. Rebuild `TODAY_JOBS` as the subset of `ALL_JOBS` whose `date` equals
    today's run date.
 3. Update the `Last updated:` timestamp in the `.meta-row` to the current
    run's date/time (IST, matching the existing format, e.g.
    `14 Aug 2026, 09:15 AM IST`).
 4. **Do not hand-write the stat-tile numbers.** They must be computed by the
-   page's own script from `ALL_JOBS.length` / `TODAY_JOBS.length` (see the
-   fix in this PR) so the displayed counts can never drift out of sync with
-   the actual job list — that drift was the root cause of the "5 tracked but
-   list empty" dashboard bug. If you're hand-editing the HTML instead of
-   regenerating it wholesale, do not touch the stat tile markup at all.
+   page's own script from `ALL_JOBS.length` / `TODAY_JOBS.length` /
+   `UNVERIFIED_JOBS.length` so the displayed counts can never drift out of
+   sync with the actual job list — that drift was the root cause of the "5
+   tracked but list empty" dashboard bug. If you're hand-editing the HTML
+   instead of regenerating it wholesale, do not touch the stat tile markup
+   at all.
 5. Everything else in the file (styles, controls, filter/search JS) is
    static scaffolding — leave it as-is unless explicitly asked to change the
-   UI.
+   UI. The search/tab filter controls apply to `ALL_JOBS` only — the
+   Unverified Leads section is not wired to them (small, review-queue-sized
+   list; add filtering later only if it grows enough to need it).
 
 ## 12. When a source is unreachable
 
