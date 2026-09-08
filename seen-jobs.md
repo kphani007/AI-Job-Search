@@ -85,6 +85,7 @@ Format: | Date Found | Title | Company | Location | Source | URL | Reason Unveri
 | 2026-09-04 | PM/PMO- Banking/ Financial services Domain | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/8046173 | no post date shown in listing/search snippet |
 | 2026-09-07 | Delivery Lead, Corporate Banking Implementation | Capco | Poland | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7578161 | no post date shown in listing/search snippet |
 | 2026-09-07 | Lead Tester | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7126944 | no post date shown in listing/search snippet |
+| 2026-09-08 | Test Manager / QA Manager, Life Insurance (1-year renewable contract) | Evolution Singapore | Singapore | LinkedIn | https://sg.linkedin.com/jobs/view/test-manager-qa-manager-life-insurance-1-year-renewable-contract-at-evolution-singapore-4399111720 | no post date shown in listing/search snippet |
 
 ## Freelancing Leads
 Format: | Date Found | Title | Client/Company | Location | Source | URL |
@@ -506,3 +507,23 @@ Second run today, manually triggered mid-afternoon (14:11 IST) in addition to th
 | Upwork, Toptal, PeoplePerHour (WebSearch, Freelancing §14) | skipped | Queried earlier today (run 1) and 2026-09-04 with 0 leads; rotated to Freelancer.com/Guru this run instead. |
 
 New postings logged: 0. Unverified leads logged: 0. Freelancing leads logged: 0 (18th consecutive run with none across both routine and ad hoc runs — pattern well-documented in prior run logs, not re-elaborated here). Rejected: 0. A genuine clean-zero run across every source checked — nothing blocked, nothing new.
+
+## Run log — 2026-09-08
+
+Weekday scheduled trigger (9am IST routine). Re-verified `docs/SCOUT.md` and `seen-jobs.md` were unchanged from the last confirmed-correct state before starting (74 Unverified Leads, empty Freelancing Leads table). Keywords rotated to fresh combinations (test/quality manager + life insurance/annuity/P&C on LinkedIn global; project/delivery manager + health/general insurance/NBFC on LinkedIn India; test/QA/quality analyst + fintech/banking/NBFC/lending on Jobaaj; delivery lead/implementation manager/project coordinator + insurance/banking/fintech/NBFC on Naukri; test/QA/quality manager + fintech/banking/insurance/NBFC on Indeed; project/delivery/program manager + insurtech/life insurance/retirement on Wellfound; delivery lead/implementation manager/project coordinator + banking/insurance/fintech/lending on Glassdoor; QA/software tester/quality assurance on Toptal, project/delivery/program manager on Upwork for Freelancing).
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | 2 queries. Query 1 (test/quality manager, life insurance/annuity/P&C, global): 1 on-category/on-sector match with no post date shown — logged to Unverified Leads: Evolution Singapore (Test Manager / QA Manager, Life Insurance, 1-year renewable contract — stays in Unverified Leads rather than the Freelancing widget per §14's routing rule since it matches §2–§3). "Test Manager (Insurance – Life and Annuity)" via Jobs via Dice confirmed-stale ("posted May 1, 2026"); Liberty Mutual Insurance QA Manager excluded, extremely old/stale LinkedIn job ID; a strong-looking American Equity "Sr. Manager, Quality Assurance Teams" candidate ("posted 3 Days Ago") was off-source-list (Built In, not linkedin.com) — not logged despite the fit. Query 2 (project/delivery manager, health/general insurance/NBFC, India): 0 new — no in.linkedin.com individual postings surfaced (search returned only Built In/The Muse/ITJobsWatch/Greenhouse results); Shift Technology's Greenhouse URL is the exact posting already logged 2026-08-20 — not re-logged. |
+| Jobaaj (WebSearch) | ok | Test/QA/quality analyst + fintech/banking/NBFC/lending query. The one jobaaj.com result (Yethi Consulting, QA Analyst - Cash Management Systems) is the exact posting already logged 2026-09-01 — not re-logged. Remainder off-source-list. 0 new. |
+| Naukri (WebSearch) | ok | Delivery lead/implementation manager/project coordinator + insurance/banking/fintech/NBFC query. Only one individual naukri.com result (Credlix, "Manager - EXIM Sales") — off-category, sales role. Remainder off-source-list or category pages. 0 new. |
+| Indeed (WebSearch) | ok | Test/QA/quality manager + fintech/banking/insurance/NBFC query. Only aggregator/category pages returned across Indian cities, no individual postings with title+company+URL to evaluate. 0 new. |
+| Wellfound (WebSearch) | ok | Project/delivery/program manager + insurtech/life insurance/retirement query. "Part-Time Project Manager - Life Insurance Technology" excluded, stale LinkedIn-style job ID; Overjet "Senior Product Manager, Insurance Product" excluded, Product discipline; KT Ellis "Financial Professional – Life Insurance & Retirement Solutions" excluded, sales/advisory role not PM/QA. 0 new. |
+| Glassdoor (WebSearch) | ok | Delivery lead/implementation manager/project coordinator + banking/insurance/fintech/lending query. Only category/career-insight pages and company-description narrative (Virtusa) with no specific job URL returned. 0 new. |
+| Greenhouse | skipped | Heavily covered across recent runs (2026-09-02 through 2026-09-07); rotated effort to the other sources this run. |
+| GitHub issues | ok | 0 open issues/leads. |
+| Toptal (WebSearch, Freelancing §14) | ok | QA/software tester/quality assurance query. Only category/hire-a-freelancer hub pages returned, no individual client-posted job to evaluate. 0 new. |
+| Upwork (WebSearch, Freelancing §14) | ok | Project/delivery/program manager contract query. One narrative-only "posted 2 days ago" listing (Candor Group, sales-commission-management platform) had no confirmable URL and was off-sector regardless (not BFSI/insurance). 0 new. |
+| Freelancer.com, PeoplePerHour, Guru (WebSearch, Freelancing §14) | skipped | Queried 2026-09-07 (both runs) with 0 leads; rotated to Toptal/Upwork this run instead. |
+
+New postings logged: 0. Unverified leads logged: 1 (see Unverified Leads table above). Freelancing leads logged: 0 (19th consecutive run with none — pattern well-documented in prior run logs, not re-elaborated here). Rejected: 0.
