@@ -87,6 +87,9 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 | 2026-09-11 | Senior QA Automation Engineer | SaveIN | Gurgaon | Wellfound | https://wellfound.com/jobs/4275944-senior-qa-automation-engineer | New |
 | 2026-09-11 | Senior QA Automation Engineer (Remote) | Upgrade | Remote | Wellfound | https://wellfound.com/jobs/1175222-senior-qa-automation-engineer-remote | New |
 | 2026-09-11 | Junior QA Engineer | Decentro | Bengaluru | Wellfound | https://wellfound.com/jobs/1407311-junior-qa-engineer | New |
+| 2026-09-11 | Quality Assurance Analyst | Oodle Finance | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/oodlefinance/jobs/8755753002 | New |
+| 2026-09-11 | Quality Assurance Specialist II | Affirm | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/affirm/jobs/6290347003 | New |
+| 2026-09-11 | QA Automation Engineer | Phizenix | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/phizenix/jobs/5398758008 | New |
 
 ## Unverified Leads
 Format: | Date Found | Title | Company | Location | Source | URL | Reason Unverified |
@@ -608,11 +611,12 @@ show one — so nearly every genuine match was defaulting into Unverified
 Leads instead of the main list, despite there being no actual evidence any
 of them were stale.
 
-**Retroactive migration:** all 80 rows in the Unverified Leads table above
-(2026-08-15 through 2026-09-08) were reviewed — every single one had reason
+**Retroactive migration:** all 83 rows in the Unverified Leads table (2026-08-15 through
+2026-09-11, including 3 added by a same-day digest run that landed on
+`master` while this fix was in review) were reviewed — every single one had reason
 "no post date shown in listing/search snippet" (none had a relative date
 like "2 weeks ago" or a mirror-site-date conflict, which would still route
-to the narrower Unverified bucket under the revised rules). All 80 were
+to the narrower Unverified bucket under the revised rules). All 83 were
 moved into the main table above with `Status: New`, preserving their
 original "Date First Seen" dates (not reset to today). The Unverified Leads
 table is now empty going forward and should stay that way except for
@@ -636,3 +640,29 @@ populate, the same way Freelancing did (0 leads for its first ~20 runs).
 `docs/SCOUT.md` and `docs/index.html` were both updated in this same
 change (not a routine run — outside the normal "don't touch SCOUT.md"
 constraint, since the user explicitly asked for this fix).
+
+**Merge note:** this branch was rebased against `master` after a second
+2026-09-11 digest run (see the `Run log — 2026-09-11 (run 2)` entry below)
+landed 3 more Unverified Leads (Oodle Finance, Affirm, Phizenix) before this
+PR was merged. Those 3 were migrated into the main table the same way as the
+other 80, consistent with this fix.
+
+## Run log — 2026-09-11 (run 2)
+
+Second run today (scheduled trigger fired again same weekday). Re-verified `docs/SCOUT.md` and `seen-jobs.md` were unchanged from run 1's confirmed-correct state before starting (89 rows main+unverified combined, 80 Unverified Leads, empty Freelancing Leads). Note: the `claude/fix-unverified-logic-sap-gts` branch/PR (open, unmerged) revises the Unverified-bucket default logic and adds a SAP GTS widget, but per docs/SCOUT.md's own "never touch SCOUT.md during a routine run" instruction and since that PR is still awaiting manual review on master, this run continues to follow master's current (pre-fix) §5/§6 rules as written — not the proposed revision. Keywords rotated away from run 1's combinations (Greenhouse PM/QA sweeps — skipped in run 1 — covered this run; LinkedIn switched to payments/core-banking/lending delivery-lead angle and NBFC/loan-management QA-analyst angle; Freelancing rotated to Upwork/Guru, skipped in run 1).
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | 2 queries. Query 1 (delivery lead/implementation manager, payments/core banking/lending, global): 0 new — NTT Data (posted March 23, 2026), SmartEdge Solutions (posted March 17, 2026), and Manpower Singapore (posted August 21, 2025) confirmed-stale via explicit dates; State Street "Payments and Cash Delivery Lead" (job ID 3789453942) and Dojo "Delivery Lead - Payments Products" (job ID 3846087532) both confirmed-excluded via the LinkedIn job-ID magnitude heuristic (well below the ~4.44-4.49B range seen on current Sep 2026 postings); Wells Fargo ×2 and LexisNexis excluded — Product Manager/BD titles, not PM/Delivery or QA buckets per §2. Query 2 (QA analyst/test analyst, NBFC/loan management/insurance, India): 0 new — Calypso Technology (now Adenza) Senior QA Analyst (job ID 2964148025) confirmed-stale via ID heuristic, same company/pattern already excluded in the 2026-08-15 run 3 log; remainder aggregator/category pages. |
+| Jobaaj (WebSearch) | ok | Test manager/QA manager + banking/NBFC/fintech query. 0 new: Xilligence, Yethi, and CITI results are exact duplicates already logged (main/Unverified tables); Talengage Senior Wealth Manager (Sales, off-category) and Knight Fintech VP Product Implementation (VP, over seniority cap) excluded; one Built In (not Jobaaj) result off-source-list, not logged. |
+| Naukri (WebSearch) | ok | Delivery lead/project coordinator + banking/insurance/NBFC query. Only aggregator/category pages returned (e.g. "Banking And Nbfc Jobs"), no individual postings to evaluate. 0 new. |
+| Indeed (WebSearch) | ok | Project coordinator/implementation specialist + insurance/banking/NBFC query. Only aggregator/category pages returned, no individual postings with title+company+URL to evaluate. 0 new. |
+| Greenhouse (WebSearch) | ok | 2 queries. PM query: 0 new — Credit Karma, AppsFlyer, Figure, PhonePe ×2, Prove, and BlueVine results were off-category (partner/legal/compliance/BD/CS management, not PM/Delivery per §2); AutoScout24 and TransferGo excluded — Product Manager titles, not PM/Delivery bucket. QA query: 3 on-category/on-sector matches with no post date shown — logged to Unverified Leads: Oodle Finance (Quality Assurance Analyst — UK-regulated auto lender, lending/BFSI), Affirm (Quality Assurance Specialist II — BNPL/lending fintech, distinct posting/URL from Affirm's already-logged Engineering Manager QA role), Phizenix (QA Automation Engineer — "AI-native financial platform"). OneVest QA Engineer re-surfaced but is an exact URL duplicate of the row already logged 2026-08-15 — not re-logged per §8. Incode Technologies (identity/KYC platform serving multiple verticals, not BFSI-specific enough per §3 discipline) and Impact.com (internal "Finance Invoicing Squad" team at an affiliate-marketing company, not the company's core business domain — same employee-benefits-style false-positive pattern as the Trace3/Webflow/Astranis exclusions) both excluded as insufficiently BFSI-specific. Machinify (Director — over seniority cap) also excluded. |
+| Wellfound (WebSearch) | ok | Project manager/delivery lead + insurance/lending/fintech query. Only startup-collection/category pages returned (fintech/insurtech/lending company lists), no individual postings to evaluate. 0 new. |
+| Glassdoor | skipped | Queried this morning (run 1) with 0 individual postings; rotated effort elsewhere this run. |
+| GitHub issues | ok | 0 open issues/leads. |
+| Upwork (WebSearch, Freelancing §14) | ok | Project manager + fintech/insurance freelance query. Only hire-a-freelancer/category/resource pages returned, no individual client-posted job to evaluate. 0 new. |
+| Guru (WebSearch, Freelancing §14) | ok | QA tester/project manager freelance query. Only hire-a-freelancer/category pages and a Wikipedia result returned, no individual job posting to evaluate. 0 new. |
+| Freelancer.com, Toptal, PeoplePerHour (WebSearch, Freelancing §14) | skipped | Toptal/PeoplePerHour queried this morning (run 1) with 0 leads; Freelancer.com rotated out this run to prioritize Upwork/Guru instead. |
+
+New postings logged: 0. Unverified leads logged: 3 (see Unverified Leads table above). Freelancing leads logged: 0 (23rd consecutive run with none). Rejected: 0.
