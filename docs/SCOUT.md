@@ -25,6 +25,12 @@ same pattern as the Freelancing widget). If reality and this document ever
 disagree, update this document in the same PR — don't let the logic drift
 back into an undocumented prompt.
 
+**`docs/BRD.md`** is a short, plain-language bullet-point summary of this
+document, for quick reference. Whenever a logic change or new requirement
+is made here, update `docs/BRD.md`'s matching bullet(s) and its change log
+in the **same PR** — this document stays the authoritative source, but the
+two must not drift apart.
+
 ## 1. Goal
 
 Track new Project/Delivery Management and Quality/QA job postings —
