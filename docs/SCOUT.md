@@ -10,7 +10,18 @@ Reverse-engineered from `seen-jobs.md` and `docs/index.html` history as of
 IC-level roles, sector/geography broadening, unverified-leads list, more
 sources — see the diff that introduced this note for the before/after), then
 revised again 2026-08-15 (Unverified Leads now shown on the dashboard in
-their own section — see §11 step 1a). If reality and this document ever
+their own section — see §11 step 1a), then revised again 2026-09-11 per
+direct user feedback after ~4 weeks of runs showed the "must confirm an
+absolute date" bar was almost never satisfiable — most board search
+snippets never show one — so nearly everything (80 of 85 tracked postings)
+was piling up in Unverified Leads instead of the main list. §5/§6 now
+default a role/sector-matching posting to `New` unless a date is actually
+found and confirms it's stale; Unverified Leads is kept only for genuinely
+ambiguous cases. All 80 previously-Unverified rows were migrated into the
+main table with `Status: New` in the same PR (their original "Date First
+Seen" dates were preserved, not reset to the migration date). The same PR
+also added §15, a SAP GTS widget (separate from the BFSI/InsurTech scope,
+same pattern as the Freelancing widget). If reality and this document ever
 disagree, update this document in the same PR — don't let the logic drift
 back into an undocumented prompt.
 
@@ -136,20 +147,25 @@ A posting must match §2 (role bucket) and §3 (sector + geography) and not
 already be logged per the dedupe key (§8). Given those three hold, it goes
 into exactly one of three buckets:
 
-1. **Main list, `Status: New`** — post date is *confirmed* within the
-   recency window (§6, 3 days).
-2. **Unverified Leads list** (§9) — role/sector match confirmed, but the
-   post date could not be confirmed as within the recency window (only a
-   relative date like "2 weeks ago", no date shown at all, or a mirror site
-   whose indexed date is untrustworthy). Logged separately, not counted as
-   "New" in the dashboard/stats, for manual review.
-3. **Excluded, not logged** — post date is *confirmed* older than the
-   recency window. Genuinely stale, no ambiguity, nothing to review.
-
-Also exclude and do not log (regardless of date):
-
-- Roles that don't match either bucket in §2, even loosely.
-- Postings with no BFSI/InsurTech/lending/retirement domain signal per §3.
+1. **Main list, `Status: New`** — the default. Use this unless a date is
+   actually found and that date confirms the posting is stale (bucket 3).
+   No date shown at all, a relative date within the window ("2 days ago"),
+   or a source that simply doesn't surface dates — all of these still go
+   here as `New`, not held back. (Revised 2026-09-11 — see the note at the
+   top of this document for why: requiring a *confirmed* date before
+   logging as `New` meant almost nothing ever qualified, since most board
+   search snippets don't show one.)
+2. **Excluded, not logged** — a date *was* found and it confirms the
+   posting is older than the recency window (§6). Also exclude regardless
+   of date: roles that don't match either bucket in §2, even loosely, and
+   postings with no BFSI/InsurTech/lending/retirement domain signal per §3.
+3. **Unverified Leads list** (§9) — reserved for genuinely ambiguous cases
+   only, e.g. conflicting date signals (a mirror site's indexed date looks
+   fresh but the canonical listing you can cross-check suggests otherwise),
+   or a case where you have a specific, documented reason to distrust an
+   otherwise-qualifying match. This should be rare — don't use it as a
+   default parking spot the way postings used to land here just for lacking
+   a date.
 
 **Known false-positive pattern:** job-board aggregators (Jobaaj in
 particular) can mirror a LinkedIn posting and show a *found* date that is
@@ -157,25 +173,21 @@ much more recent than the *actual* posting date. The Allianz Technology
 "Manager - Quality Management" posting was logged 2026-08-11 via Jobaaj, then
 rejected after the user found the real post date was ~1 year old (see
 `seen-jobs.md` row, "Rejected - stale posting", and commit `8862f62`). This
-is exactly the pattern bucket 2 above exists to catch now: when a source
-shows a relative date without an absolute one, don't guess — put it in the
-Unverified Leads list instead of the main New list. Cross-check against the
-canonical listing (e.g. the LinkedIn URL itself) when you can; if that
-confirms a date outside the window, treat it like bucket 3 (exclude/reject)
-instead.
+is why bucket 2 (exclude) requires an *actual confirmed* stale date, not a
+guess — but it's also why a bare, unconfirmed relative date from a mirror
+site isn't grounds to hold a posting back either; cross-check against the
+canonical listing (e.g. the LinkedIn URL itself) when you can, and only
+exclude if that confirms staleness.
 
 ## 6. Recency window
 
-**3 days.** A posting is in-window only if its *confirmed* actual post date
-(not the date a mirror site indexed it) is no more than 3 days before the
-run date — tightened 2026-08-14 from a previous 30-day default, per explicit
-user instruction. This is deliberately strict: most generic board-search
-snippets only show relative dates ("2 weeks ago") with no day-level
-precision, so expect most candidates to land in the Unverified Leads list
-(§9) rather than the main New list. That's intentional — precision on the
-main list, breadth preserved in the unverified list rather than dropped
-entirely. See §13 for a suggestion on running more than once/day given how
-tight this window is.
+**3 days.** A posting is excluded only if its *confirmed* actual post date
+(not the date a mirror site indexed it) is more than 3 days before the run
+date — tightened 2026-08-14 from a previous 30-day default, per explicit
+user instruction. Per §5 (revised 2026-09-11), the absence of a date is no
+longer grounds to hold a posting out of the main list — it only matters
+when a date is actually found, to check whether it falls outside this
+window.
 
 ## 7. Source reachability (tested 2026-08-14)
 
@@ -255,12 +267,12 @@ One row per posting, appended in date order:
   `Rejected - <reason>` (see the Allianz row for the exact pattern) so the
   history stays auditable.
 
-### Unverified Leads (separate list, added 2026-08-14)
+### Unverified Leads (separate list, added 2026-08-14; scope narrowed 2026-09-11)
 
-Postings matching §5 bucket 2 (role/sector match, unconfirmed date) go in
-their own section, below the main table and above any Run log sections —
-**not** mixed into the main table, and **not** counted toward the "New"
-stats or the dashboard:
+Postings matching §5 bucket 3 (genuinely ambiguous — see §5, this should be
+rare) go in their own section, below the main table and above any Run log
+sections — **not** mixed into the main table, and **not** counted toward
+the "New" stats or the dashboard:
 
 ```
 ## Unverified Leads
@@ -270,11 +282,13 @@ Format: | Date Found | Title | Company | Location | Source | URL | Reason Unveri
 ```
 
 Same dedupe rule applies (§8) — check both tables before adding anywhere.
-When a lead's date later gets confirmed as in-window, move it to the main
-table per §8; if confirmed as stale, just leave it in Unverified Leads (or
-delete the row — this list is a working review queue, not a permanent
+When a lead's ambiguity resolves toward in-window, move it to the main
+table per §8; if it resolves toward stale, just leave it in Unverified Leads
+(or delete the row — this list is a working review queue, not a permanent
 audit log like the main table, so it's fine to prune stale/rejected-on-review
-entries here rather than accumulating "Rejected" rows forever).
+entries here rather than accumulating "Rejected" rows forever). As of
+2026-09-11, don't route a posting here just because it lacks a date — per
+§5 that now goes straight to the main table as `New`.
 
 ### Run log (required every run)
 
@@ -336,14 +350,16 @@ blocked — see run log)"`), matching the pattern already used in commit
     `{"date": "<Date Found>", "title", "company", "location", "source",
     "url", "reason": "<Reason Unverified>", "category": "pm"|"qa"}`.
     Shown on the dashboard in its own "Unverified Leads" section (added
-    2026-08-15 per user request, after the user noticed the leads found on
-    2026-08-15's run weren't visible anywhere on the site) — visually
-    distinct from `ALL_JOBS` (amber "Unverified" badge, left-border accent,
-    reason text shown on the row) and counted in its own "Unverified leads"
-    stat tile, separate from "Total jobs tracked" / "Added today" which stay
-    scoped to confirmed `New` postings only. If a lead is later moved from
-    Unverified Leads to the main table per §8, it moves from
-    `UNVERIFIED_JOBS` to `ALL_JOBS` on the next run the same way.
+    2026-08-15 per user request) — visually distinct from `ALL_JOBS` (amber
+    "Unverified" badge, left-border accent, reason text shown on the row)
+    and counted in its own "Unverified leads" stat tile, separate from
+    "Total jobs tracked" / "Added today" which stay scoped to `New`
+    postings only. As of 2026-09-11 this table (and array) should normally
+    be empty or near-empty — §5 bucket 3 is now reserved for rare, genuinely
+    ambiguous cases, not a default parking spot — so don't be surprised if
+    most runs regenerate this as `[]`. If a lead's ambiguity resolves toward
+    in-window, it moves from `UNVERIFIED_JOBS` to `ALL_JOBS` on the next run
+    the same way.
 1b. Rebuild the `FREELANCE_JOBS` JS array from every row in the Freelancing
     Leads table (§14), in the same order they appear there. Each entry:
     `{"date": "<Date Found>", "title", "company", "location", "source",
@@ -351,6 +367,15 @@ blocked — see run log)"`), matching the pattern already used in commit
     "Freelancing" section (added 2026-08-15 alongside step 1a) — teal
     "Freelance" badge and left-border accent, own "Freelance gigs" stat
     tile, independent of `ALL_JOBS`/`UNVERIFIED_JOBS` and their stats.
+1c. Rebuild the `GTS_JOBS` JS array from every row in the SAP GTS Leads
+    table (§15, added 2026-09-11), in the same order they appear there.
+    Each entry: `{"date": "<Date Found>", "title", "company", "location",
+    "source", "url", "category": "gts"}` — SAP GTS roles don't map to the
+    PM/QA split, so `category` is always the literal string `"gts"` here
+    (not recomputed from title like the other arrays). Shown on the
+    dashboard in its own "SAP GTS" section — indigo "SAP GTS" badge and
+    left-border accent, own "SAP GTS roles" stat tile, independent of the
+    other three arrays and their stats.
 2. Rebuild `TODAY_JOBS` as the subset of `ALL_JOBS` whose `date` equals
    today's run date.
 3. Update the `Last updated:` timestamp in the `.meta-row` to the current
@@ -358,17 +383,17 @@ blocked — see run log)"`), matching the pattern already used in commit
    `14 Aug 2026, 09:15 AM IST`).
 4. **Do not hand-write the stat-tile numbers.** They must be computed by the
    page's own script from `ALL_JOBS.length` / `TODAY_JOBS.length` /
-   `UNVERIFIED_JOBS.length` / `FREELANCE_JOBS.length` so the displayed
-   counts can never drift out of sync with the actual job list — that drift
-   was the root cause of the "5 tracked but list empty" dashboard bug. If
-   you're hand-editing the HTML instead of regenerating it wholesale, do not
-   touch the stat tile markup at all.
+   `UNVERIFIED_JOBS.length` / `FREELANCE_JOBS.length` / `GTS_JOBS.length` so
+   the displayed counts can never drift out of sync with the actual job
+   list — that drift was the root cause of the "5 tracked but list empty"
+   dashboard bug. If you're hand-editing the HTML instead of regenerating it
+   wholesale, do not touch the stat tile markup at all.
 5. Everything else in the file (styles, controls, filter/search JS) is
    static scaffolding — leave it as-is unless explicitly asked to change the
    UI. The search/tab filter controls apply to `ALL_JOBS` only — the
-   Unverified Leads and Freelancing sections are not wired to them (small,
-   review-queue-sized lists; add filtering later only if either grows enough
-   to need it).
+   Unverified Leads, Freelancing, and SAP GTS sections are not wired to them
+   (small, review-queue-sized lists; add filtering later only if any of
+   them grows enough to need it).
 
 ## 12. When a source is unreachable
 
@@ -462,10 +487,12 @@ run log table as the main sources (§10), using the source names above.
 ### Recency window
 
 **15 days** — looser than the main list's 3-day window (§6), tighter than
-the original 30-day default. Same "confirmed vs. unconfirmed date" logic as
-§5 applies for judgment calls, but keep this widget simple: **if the post
-date can't be confirmed within 15 days, skip it** — there is no separate
-"unverified freelancing" bucket to fall back to.
+the original 30-day default. Note this widget deliberately did **not**
+follow the 2026-09-11 default-to-New change made to the main list (§5) —
+keep this widget simple: **if the post date can't be confirmed within 15
+days, skip it** — there is no separate "unverified freelancing" bucket to
+fall back to. (§15's SAP GTS widget uses this same stricter rule, by
+explicit user choice, rather than the main list's default-to-New rule.)
 
 ### `seen-jobs.md` entry format
 
@@ -492,3 +519,79 @@ Per §11, rebuild a `FREELANCE_JOBS` JS array from every row in this table:
 its own "Freelancing" dashboard section — distinct badge/accent color from
 both `ALL_JOBS` and `UNVERIFIED_JOBS` — with its own stat tile, independent
 of the other two arrays and their stats.
+
+## 15. SAP GTS widget (added 2026-09-11)
+
+Separate from the BFSI/InsurTech/lending/retirement scope in §1–§3, and
+separate from the Freelancing widget (§14) — this one has nothing to do with
+contract work. It tracks **any SAP GTS (Global Trade Services) role**,
+any employer, any industry — SAP GTS is itself the scope, the way BFSI is
+the scope for the main list.
+
+### Role scope
+
+Any job whose title references SAP GTS specifically — "SAP GTS Consultant",
+"SAP GTS Techno-Functional Consultant", "SAP Global Trade Services
+Analyst/Manager/Specialist", "SAP GTS Project Manager", "GTS Compliance
+Consultant (SAP)", etc. Seniority: IC/Analyst through Director, same range
+as §2 (exclude VP+/C-level). No PM-vs-QA split here — SAP GTS work spans
+functional, technical, and project roles indiscriminately, so there's no
+`pm`/`qa` categorization to make; see the Dashboard section below.
+
+**Watch for false positives on the bare acronym "GTS"** — it collides with
+unrelated things (HSBC's "Global Trade Solutions" business line, "Global
+Trading Systems" the market-making firm, generic "Global Trade Services"
+teams with no SAP product involved). Only log a posting if the title or
+description makes the **SAP** product connection explicit — a plain
+"Global Trade Services Analyst" with no mention of SAP, GTS module
+configuration, customs/compliance system work tied to SAP ERP/S4, etc. is
+not in scope.
+
+### Sources
+
+Use `WebSearch` with `site:` filters, same `WebFetch`-blocked caveat as
+§4/§7 — `site:linkedin.com/jobs "SAP GTS"`, `site:in.linkedin.com/jobs
+"SAP GTS"`, and opportunistically any of the §4/§14 sources if SAP GTS
+postings turn up there too. Don't use `jobs.lever.co` (see the removal
+note in §4).
+
+### Recency window
+
+**15 days**, with the same strict rule as §14: **if the post date can't be
+confirmed within 15 days, skip it** — no separate "unverified GTS" bucket.
+This is a deliberate, explicit choice (not an oversight) to keep this
+widget consistent with Freelancing rather than adopting the main list's
+2026-09-11 default-to-New change — expect this widget to come up empty on
+many runs, the same way Freelancing did for its first ~20 runs, since SAP
+GTS postings are a narrow niche and search snippets rarely carry a
+confirmable date. That's an acceptable, known trade-off of the choice, not
+a bug to fix.
+
+### `seen-jobs.md` entry format
+
+Its own table, positioned below the Freelancing Leads table (§14), above
+the Run log sections:
+
+```
+## SAP GTS Leads
+Format: | Date Found | Title | Company | Location | Source | URL |
+|---|---|---|---|---|---|
+| YYYY-MM-DD | <Title> | <Company> | <Location> | <Source> | <Full URL> |
+```
+
+Same dedupe rule (§8) applies within this table. Also check the main table,
+Unverified Leads, and Freelancing Leads before logging here — if the exact
+same URL or (Title, Company) pair already exists in any of those, don't
+double-log it into SAP GTS Leads too (in practice this is unlikely to
+matter, since SAP GTS roles rarely also carry a BFSI/InsurTech signal, but
+check anyway).
+
+### Dashboard
+
+Per §11 step 1c, rebuild a `GTS_JOBS` JS array from every row in this
+table: `{"date", "title", "company", "location", "source", "url",
+"category": "gts"}` — category is always the literal `"gts"`, not
+recomputed from title. Shown in its own "SAP GTS" dashboard section —
+distinct badge/accent color from `ALL_JOBS`, `UNVERIFIED_JOBS`, and
+`FREELANCE_JOBS` — with its own stat tile, independent of the other three
+arrays and their stats.

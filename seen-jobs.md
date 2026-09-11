@@ -7,96 +7,100 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 | 2026-08-10 | Associate Project Manager | eClerx | Pune, Maharashtra | LinkedIn (GitHub issue lead) | https://www.linkedin.com/jobs/view/4367307316/ | New |
 | 2026-08-11 | Senior Software Delivery Manager - Life Insurance | Visara Partners | Bengaluru, Karnataka | LinkedIn | https://in.linkedin.com/jobs/view/senior-software-delivery-manager-life-insurance-at-visara-partners-4449559557 | New |
 | 2026-08-11 | Manager - Quality Management | Allianz Technology | Pune, Maharashtra | Jobaaj (LinkedIn-sourced) | https://www.jobaaj.com/job/allianz-technology-manager-quality-management-pune-maharashtra-7-to-9-years-654223 | Rejected - stale posting (actual post date 1 year ago per jobaaj.com, not within recency window; see issue #5) |
+| 2026-08-15 | Project Manager, Digital Assets | DriveWealth | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/drivewealth/jobs/7815741003 | New |
+| 2026-08-15 | TSYS QA | Virtusa | Chennai, Tamil Nadu | Jobaaj | https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193 | New |
+| 2026-08-15 | Automation QA - Treasury, FX | CITI | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225 | New |
+| 2026-08-15 | Project Manager | IndusInd Bank | Mumbai, Maharashtra | Jobaaj | https://www.jobaaj.com/job/indusind-bank-project-manager-mumbai-maharashtra-0-to-1-years-1100433 | New |
+| 2026-08-15 | Quality Assurance Specialist | Onbe | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/onbe/jobs/4599466006 | New |
+| 2026-08-15 | QA Engineer | OneVest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/onevest/jobs/5388949008 | New |
+| 2026-08-15 | QA Engineer (Core Integrations - Banks) | Amount | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/5057917007 | New |
+| 2026-08-15 | Head of Quality Engineering | Amount | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/4416565007 | New |
+| 2026-08-15 | Portfolio Tooling & AI Enablement Analyst (Lending PMO) | Seneca Resources | Not stated in listing | LinkedIn | https://www.linkedin.com/jobs/view/portfolio-tooling-ai-enablement-analyst-lending-pmo-17186-at-seneca-resources-company-llc-4432577901 | New |
+| 2026-08-15 | Director / Senior Manager, Transformation & Change - Wealth Consumer Lending & Deposits | BMO U.S. | Illinois, United States | LinkedIn | https://www.linkedin.com/jobs/view/director-senior-manager-transformation-change-%E2%80%93-wealth-consumer-lending-deposits-at-bmo-u-s-4425981360 | New |
+| 2026-08-15 | Delivery Manager (Remote Friendly) | Mission Lane | Not stated in listing (San Francisco per listing) | Greenhouse | https://boards.greenhouse.io/missionlane/jobs/5430586002 | New |
+| 2026-08-15 | Agile Delivery Lead | Capco | Not stated in listing | Greenhouse | https://boards.greenhouse.io/capco/jobs/2983220 | New |
+| 2026-08-17 | Senior Technical Program Manager | Human Interest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/humaninterest/jobs/6343303 | New |
+| 2026-08-17 | Senior Project Manager (Revenue) | Human Interest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/humaninterest/jobs/6778732 | New |
+| 2026-08-17 | IT Project Manager | Strongpoint Partners | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/strongpointpartners/jobs/5254377008 | New |
+| 2026-08-17 | Quality Assurance Analyst | Lendable | London | Wellfound | https://wellfound.com/jobs/1667328-quality-assurance-analyst | New |
+| 2026-08-17 | Senior QA Engineer, Digital Assets | DriveWealth | New York City | Wellfound | https://wellfound.com/jobs/2994249-senior-qa-engineer-digital-assets | New |
+| 2026-08-17 | Lead QA Engineer - Remote | TransFi | India (Remote) | Wellfound | https://wellfound.com/jobs/3116937-lead-qa-engineer-remote | New |
+| 2026-08-18 | Engineering Manager - QA | DKB Code Factory | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/dkbcodefactory/jobs/7726100003 | New |
+| 2026-08-18 | QA Automation Tester (Payments) - All levels | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7897153 | New |
+| 2026-08-18 | Program Manager, Fintech | Toast | Remote, United States | Greenhouse | https://boards.greenhouse.io/toast/jobs/7629117 | New |
+| 2026-08-19 | Delivery Lead - Loan Operations | Acuity Knowledge Partners (Moody's Analytics) | Gurugram | Naukri | https://www.naukri.com/job-listings-delivery-lead-loan-operations-acuity-knowledge-partners-gurugram-7-to-10-years-240726501467 | New |
+| 2026-08-19 | QA Automation Lead | Galileo Financial Technologies | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/galileofinancialtechnologies/jobs/7516523003 | New |
+| 2026-08-19 | Senior Customer Support Controls & Governance Program Manager | Mercury | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/mercury/jobs/6144590004 | New |
+| 2026-08-19 | Technical Program Manager | sFOX | Remote | Wellfound | https://wellfound.com/jobs/4348396-technical-program-manager | New |
+| 2026-08-20 | Quality Analyst (Fintech/AML/KYC) | TaskUs | Gurgaon/Gurugram, Haryana | Jobaaj | https://www.jobaaj.com/job/taskus-quality-analyst-fintech-aml-kyc-gurgaon-gurugram-haryana-0-to-2-years-474735 | New |
+| 2026-08-20 | Quality Assurance Analyst | Saxo Bank MENA | Dubai, United Arab Emirates | Jobaaj | https://www.jobaaj.com/job/saxo-bank-mena-quality-assurance-analyst-dubai-united-arab-emirates-3-to-5-years-1161536 | New |
+| 2026-08-20 | Test Manager | Xilligence | Thiruvananthapuram/Trivandrum, Kerala | Jobaaj | https://www.jobaaj.com/job/xilligence-test-manager-thiruvananthapuram-trivandrum-kerala-10-to-12-years-787400 | New |
+| 2026-08-20 | Senior Software Tester | Claidroid | Thiruvananthapuram, Kerala | Jobaaj | https://www.jobaaj.com/job/claidroid-senior-software-tester-thiruvananthapuram-kerala-5-to-7-years-1431389 | New |
+| 2026-08-20 | Program Manager | Tenb Fintech | Gurugram | Naukri | https://www.naukri.com/job-listings-program-manager-tenb-fintech-gurugram-1-to-3-years-040425022346 | New |
+| 2026-08-20 | Delivery Manager | Shift Technology | United Kingdom | Greenhouse | https://job-boards.greenhouse.io/shifttechnology/jobs/7667439003 | New |
+| 2026-08-21 | Regional Funding Partnerships Project Manager - Retail Finance | SeaMoney | Not stated in listing | Greenhouse | https://boards.greenhouse.io/seamoney/jobs/5010742002 | New |
+| 2026-08-21 | Implementation Manager | Bond Financial Technologies | Not stated in listing | Greenhouse | https://boards.greenhouse.io/bondfinancialtechnologies/jobs/4760139003 | New |
+| 2026-08-21 | Manager, Acquisitions Program Management | Mission Lane | Not stated in listing | Greenhouse | https://boards.greenhouse.io/missionlane/jobs/5212210002 | New |
+| 2026-08-21 | Operations Manager, Project Delivery | Matic | Not stated in listing | Greenhouse | https://boards.greenhouse.io/matic/jobs/4033516004 | New |
+| 2026-08-24 | Delivery PMO | Barclays | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/barclays-delivery-pmo-pune-1-to-3-years-41242 | New |
+| 2026-08-24 | Technical Delivery Manager | Barclays Shared Services | Pune, Maharashtra | Naukri | https://www.naukri.com/job-listings-technical-delivery-manager-barclays-shared-services-pune-7-to-12-years-270726502768 | New |
+| 2026-08-24 | Engineering Manager, QA (Servicing Quality) | Affirm | Not stated in listing | Greenhouse | https://boards.greenhouse.io/affirm/jobs/5271484003 | New |
+| 2026-08-25 | Quality Automation Architect | PayNearMe, Inc. | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/paynearmeinc/jobs/4298431009 | New |
+| 2026-08-25 | Program Management Lead | Lead Bank | Remote | Wellfound | https://wellfound.com/jobs/3924749-program-management-lead | New |
+| 2026-08-26 | Senior Project Manager | Slide Insurance | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/slideinsurance/jobs/5126908008 | New |
+| 2026-08-26 | Insurance Senior Project Manager, Enterprise Project Mgmt Office | EPIC Brokers | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/edgewoodpartnersinsurancecenter/jobs/8555139002 | New |
+| 2026-08-26 | Project Manager - Insurance | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7785422 | New |
+| 2026-08-26 | Credit Analysis-FIG/NBFC/FIS (Delivery Lead/Manager) | Acuity Analytics | India (city not stated) | LinkedIn | https://in.linkedin.com/jobs/view/credit-analysis-fig-nbfc-fis-delivery-lead-manager-at-acuity-analytics-4403373665 | New |
+| 2026-08-27 | Test Delivery Manager - Digital Wealth & Banking | QualityKiosk Technologies | Anywhere in India/Multiple Locations | Jobaaj | https://www.jobaaj.com/job/qualitykiosk-technologie-qualitykiosk-technologies-test-delivery-manager-digital-wealth-banking-anywhere-in-india-multiple-locations-8-to-10-years-1074920 | New |
+| 2026-08-27 | Implementations Consultant | FIS® Amount™ | Chicago, IL | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/5057434007 | New |
+| 2026-08-27 | Agile Delivery Manager | Momentum Financial Services Group | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/momentumfinancialservicesgroup/jobs/4681628008 | New |
+| 2026-08-28 | QA and Test Manager | Procentia Pensions Software Solutions | United Kingdom | LinkedIn | https://uk.linkedin.com/jobs/view/qa-and-test-manager-at-procentia-pensions-software-solutions-4104791556 | New |
+| 2026-08-28 | Business Solutions Project Delivery Manager | National Life Insurance Company | Addison, TX or Montpelier, VT | Greenhouse | https://job-boards.greenhouse.io/nationallifeinsurancecompany/jobs/4058299009 | New |
+| 2026-08-28 | Fintech Implementation Manager | Sunrise Banks | Sioux Falls, SD | Indeed | https://www.indeed.com/viewjob?jk=0a4e63bce510eee3 | New |
+| 2026-08-28 | Technical Delivery Lead – FinTech & Banking Platforms (Consulting) | Intellibus | Reston, VA | Indeed | https://www.indeed.com/viewjob?jk=bdd9a12b0d1e31ea | New |
+| 2026-08-28 | Senior Tech Delivery Lead (Life Insurance) | Intellibus | Reston, VA | Indeed | https://www.indeed.com/viewjob?jk=90867be4eb4edffb | New |
+| 2026-08-28 | QA Manager | Judi Health | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capitalrx/jobs/5289148008 | New |
+| 2026-08-28 | Manual QA Analyst | LoanStreet Inc | Not stated in listing | Greenhouse | https://boards.greenhouse.io/loanstreetinc/jobs/4001277005 | New |
+| 2026-08-31 | Project Manager | Momentum Financial Services Group | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/momentumfinancialservicesgroup/jobs/5160167008 | New |
+| 2026-08-31 | Automation Tester | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7768216 | New |
+| 2026-08-31 | Senior Onboarding Manager | kennek | London | Wellfound | https://wellfound.com/jobs/4379173-senior-onboarding-manager | New |
+| 2026-09-01 | QA Analyst - Cash Management Systems | Yethi Consulting Private Limited | Maharashtra | Jobaaj | https://www.jobaaj.com/job/yethi-consulting-private-limited-qa-analyst-cash-management-systems-maharashtra-3-to-7-years-959186 | New |
+| 2026-09-01 | Senior QA Automation Engineer | Aperia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/aperiasolutions/jobs/5223434007 | New |
+| 2026-09-01 | Senior Project Manager - SaaS Deployments | AIO Logic | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/aiologic/jobs/4364467009 | New |
+| 2026-09-02 | Technical Project Manager - III (Agile Project Manager) | Zinnia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/zinnia/jobs/4613193006 | New |
+| 2026-09-02 | Director, Program Management | Zinnia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/zinnia/jobs/4405456006 | New |
+| 2026-09-02 | Technical Project Manager IV | Zinnia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/zinnia/jobs/4405546006 | New |
+| 2026-09-02 | QA Chapter Lead and Automation Engineer (f/m/x) - Corporate Bank Technology - Merchant Solutions | Deutsche Bank | Berlin | Glassdoor | https://www.glassdoor.com/job-listing/qa-chapter-lead-and-automation-engineer-f-m-x-corporate-bank-technology-merchant-solutions-deutsche-bank-JV_IC2622109_KO0,90_KE91,104.htm?jl=1009811475913 | New |
+| 2026-09-03 | Lead Delivery Manager | Boku | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/boku/jobs/5570530004 | New |
+| 2026-09-03 | Delivery Lead, FinCrime and Cybersecurity (Toronto - Hybrid) | Capco | Toronto | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7244975 | New |
+| 2026-09-03 | Cloud Delivery Lead - AWS, GCP, Microsoft Azure | Capco | Not stated in listing | Greenhouse | https://boards.greenhouse.io/capco/jobs/2159124 | New |
+| 2026-09-03 | Senior Project Manager | Insurity | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/insurityllc/jobs/4290123009 | New |
+| 2026-09-04 | Project Manager (1-year Contract) | Momentum Financial Services Group | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/momentumfinancialservicesgroup/jobs/5142299008 | New |
+| 2026-09-04 | PMO | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/8089704 | New |
+| 2026-09-04 | Project Manager - Limited Partner Services | Alpha Financial Markets Consulting | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/alphafmcroles/jobs/8201841002 | New |
+| 2026-09-04 | PM/PMO- Banking/ Financial services Domain | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/8046173 | New |
+| 2026-09-07 | Delivery Lead, Corporate Banking Implementation | Capco | Poland | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7578161 | New |
+| 2026-09-07 | Lead Tester | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7126944 | New |
+| 2026-09-08 | Test Manager / QA Manager, Life Insurance (1-year renewable contract) | Evolution Singapore | Singapore | LinkedIn | https://sg.linkedin.com/jobs/view/test-manager-qa-manager-life-insurance-1-year-renewable-contract-at-evolution-singapore-4399111720 | New |
+| 2026-09-11 | Delivery Lead - Delivery & Change CoE NZ | ANZ | Bengaluru, Karnataka | Jobaaj | https://www.jobaaj.com/job/anz-delivery-lead-delivery-change-coe-nz-bengaluru-bangalore-karnataka-10-to-12-years-736009 | New |
+| 2026-09-11 | Senior Manager, Quality Engineering | Sardine | Remote, United States | Wellfound | https://wellfound.com/jobs/4573090-senior-manager-quality-engineering | New |
+| 2026-09-11 | Senior QA Automation Engineer | SaveIN | Gurgaon | Wellfound | https://wellfound.com/jobs/4275944-senior-qa-automation-engineer | New |
+| 2026-09-11 | Senior QA Automation Engineer (Remote) | Upgrade | Remote | Wellfound | https://wellfound.com/jobs/1175222-senior-qa-automation-engineer-remote | New |
+| 2026-09-11 | Junior QA Engineer | Decentro | Bengaluru | Wellfound | https://wellfound.com/jobs/1407311-junior-qa-engineer | New |
+| 2026-09-11 | Quality Assurance Analyst | Oodle Finance | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/oodlefinance/jobs/8755753002 | New |
+| 2026-09-11 | Quality Assurance Specialist II | Affirm | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/affirm/jobs/6290347003 | New |
+| 2026-09-11 | QA Automation Engineer | Phizenix | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/phizenix/jobs/5398758008 | New |
 
 ## Unverified Leads
 Format: | Date Found | Title | Company | Location | Source | URL | Reason Unverified |
 |---|---|---|---|---|---|---|
-| 2026-08-15 | Project Manager, Digital Assets | DriveWealth | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/drivewealth/jobs/7815741003 | no post date shown in listing/search snippet |
-| 2026-08-15 | TSYS QA | Virtusa | Chennai, Tamil Nadu | Jobaaj | https://www.jobaaj.com/job/virtusa-tsys-qa-chennai-tamil-nadu-3-to-7-years-967193 | no post date shown in listing/search snippet |
-| 2026-08-15 | Automation QA - Treasury, FX | CITI | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/citi-automation-qa-treasury-fx-pune-5-to-7-years-6225 | no post date shown in listing/search snippet |
-| 2026-08-15 | Project Manager | IndusInd Bank | Mumbai, Maharashtra | Jobaaj | https://www.jobaaj.com/job/indusind-bank-project-manager-mumbai-maharashtra-0-to-1-years-1100433 | no post date shown in listing/search snippet |
-| 2026-08-15 | Quality Assurance Specialist | Onbe | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/onbe/jobs/4599466006 | no post date shown in listing/search snippet |
-| 2026-08-15 | QA Engineer | OneVest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/onevest/jobs/5388949008 | no post date shown in listing/search snippet |
-| 2026-08-15 | QA Engineer (Core Integrations - Banks) | Amount | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/5057917007 | no post date shown in listing/search snippet |
-| 2026-08-15 | Head of Quality Engineering | Amount | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/4416565007 | no post date shown in listing/search snippet |
-| 2026-08-15 | Portfolio Tooling & AI Enablement Analyst (Lending PMO) | Seneca Resources | Not stated in listing | LinkedIn | https://www.linkedin.com/jobs/view/portfolio-tooling-ai-enablement-analyst-lending-pmo-17186-at-seneca-resources-company-llc-4432577901 | no post date shown in listing/search snippet |
-| 2026-08-15 | Director / Senior Manager, Transformation & Change - Wealth Consumer Lending & Deposits | BMO U.S. | Illinois, United States | LinkedIn | https://www.linkedin.com/jobs/view/director-senior-manager-transformation-change-%E2%80%93-wealth-consumer-lending-deposits-at-bmo-u-s-4425981360 | no post date shown in listing/search snippet |
-| 2026-08-15 | Delivery Manager (Remote Friendly) | Mission Lane | Not stated in listing (San Francisco per listing) | Greenhouse | https://boards.greenhouse.io/missionlane/jobs/5430586002 | no post date shown in listing/search snippet |
-| 2026-08-15 | Agile Delivery Lead | Capco | Not stated in listing | Greenhouse | https://boards.greenhouse.io/capco/jobs/2983220 | no post date shown in listing/search snippet |
-| 2026-08-17 | Senior Technical Program Manager | Human Interest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/humaninterest/jobs/6343303 | no post date shown in listing/search snippet |
-| 2026-08-17 | Senior Project Manager (Revenue) | Human Interest | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/humaninterest/jobs/6778732 | no post date shown in listing/search snippet |
-| 2026-08-17 | IT Project Manager | Strongpoint Partners | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/strongpointpartners/jobs/5254377008 | no post date shown in listing/search snippet |
-| 2026-08-17 | Quality Assurance Analyst | Lendable | London | Wellfound | https://wellfound.com/jobs/1667328-quality-assurance-analyst | no post date shown in listing/search snippet |
-| 2026-08-17 | Senior QA Engineer, Digital Assets | DriveWealth | New York City | Wellfound | https://wellfound.com/jobs/2994249-senior-qa-engineer-digital-assets | no post date shown in listing/search snippet |
-| 2026-08-17 | Lead QA Engineer - Remote | TransFi | India (Remote) | Wellfound | https://wellfound.com/jobs/3116937-lead-qa-engineer-remote | no post date shown in listing/search snippet |
-| 2026-08-18 | Engineering Manager - QA | DKB Code Factory | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/dkbcodefactory/jobs/7726100003 | no post date shown in listing/search snippet |
-| 2026-08-18 | QA Automation Tester (Payments) - All levels | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7897153 | no post date shown in listing/search snippet |
-| 2026-08-18 | Program Manager, Fintech | Toast | Remote, United States | Greenhouse | https://boards.greenhouse.io/toast/jobs/7629117 | no post date shown in listing/search snippet |
-| 2026-08-19 | Delivery Lead - Loan Operations | Acuity Knowledge Partners (Moody's Analytics) | Gurugram | Naukri | https://www.naukri.com/job-listings-delivery-lead-loan-operations-acuity-knowledge-partners-gurugram-7-to-10-years-240726501467 | no post date shown in listing/search snippet |
-| 2026-08-19 | QA Automation Lead | Galileo Financial Technologies | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/galileofinancialtechnologies/jobs/7516523003 | no post date shown in listing/search snippet |
-| 2026-08-19 | Senior Customer Support Controls & Governance Program Manager | Mercury | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/mercury/jobs/6144590004 | no post date shown in listing/search snippet |
-| 2026-08-19 | Technical Program Manager | sFOX | Remote | Wellfound | https://wellfound.com/jobs/4348396-technical-program-manager | no post date shown in listing/search snippet |
-| 2026-08-20 | Quality Analyst (Fintech/AML/KYC) | TaskUs | Gurgaon/Gurugram, Haryana | Jobaaj | https://www.jobaaj.com/job/taskus-quality-analyst-fintech-aml-kyc-gurgaon-gurugram-haryana-0-to-2-years-474735 | no post date shown in listing/search snippet |
-| 2026-08-20 | Quality Assurance Analyst | Saxo Bank MENA | Dubai, United Arab Emirates | Jobaaj | https://www.jobaaj.com/job/saxo-bank-mena-quality-assurance-analyst-dubai-united-arab-emirates-3-to-5-years-1161536 | no post date shown in listing/search snippet |
-| 2026-08-20 | Test Manager | Xilligence | Thiruvananthapuram/Trivandrum, Kerala | Jobaaj | https://www.jobaaj.com/job/xilligence-test-manager-thiruvananthapuram-trivandrum-kerala-10-to-12-years-787400 | no post date shown in listing/search snippet |
-| 2026-08-20 | Senior Software Tester | Claidroid | Thiruvananthapuram, Kerala | Jobaaj | https://www.jobaaj.com/job/claidroid-senior-software-tester-thiruvananthapuram-kerala-5-to-7-years-1431389 | no post date shown in listing/search snippet |
-| 2026-08-20 | Program Manager | Tenb Fintech | Gurugram | Naukri | https://www.naukri.com/job-listings-program-manager-tenb-fintech-gurugram-1-to-3-years-040425022346 | no post date shown in listing/search snippet |
-| 2026-08-20 | Delivery Manager | Shift Technology | United Kingdom | Greenhouse | https://job-boards.greenhouse.io/shifttechnology/jobs/7667439003 | no post date shown in listing/search snippet |
-| 2026-08-21 | Regional Funding Partnerships Project Manager - Retail Finance | SeaMoney | Not stated in listing | Greenhouse | https://boards.greenhouse.io/seamoney/jobs/5010742002 | no post date shown in listing/search snippet |
-| 2026-08-21 | Implementation Manager | Bond Financial Technologies | Not stated in listing | Greenhouse | https://boards.greenhouse.io/bondfinancialtechnologies/jobs/4760139003 | no post date shown in listing/search snippet |
-| 2026-08-21 | Manager, Acquisitions Program Management | Mission Lane | Not stated in listing | Greenhouse | https://boards.greenhouse.io/missionlane/jobs/5212210002 | no post date shown in listing/search snippet |
-| 2026-08-21 | Operations Manager, Project Delivery | Matic | Not stated in listing | Greenhouse | https://boards.greenhouse.io/matic/jobs/4033516004 | no post date shown in listing/search snippet |
-| 2026-08-24 | Delivery PMO | Barclays | Pune, Maharashtra | Jobaaj | https://www.jobaaj.com/job/barclays-delivery-pmo-pune-1-to-3-years-41242 | no post date shown in listing/search snippet |
-| 2026-08-24 | Technical Delivery Manager | Barclays Shared Services | Pune, Maharashtra | Naukri | https://www.naukri.com/job-listings-technical-delivery-manager-barclays-shared-services-pune-7-to-12-years-270726502768 | no post date shown in listing/search snippet |
-| 2026-08-24 | Engineering Manager, QA (Servicing Quality) | Affirm | Not stated in listing | Greenhouse | https://boards.greenhouse.io/affirm/jobs/5271484003 | no post date shown in listing/search snippet |
-| 2026-08-25 | Quality Automation Architect | PayNearMe, Inc. | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/paynearmeinc/jobs/4298431009 | no post date shown in listing/search snippet |
-| 2026-08-25 | Program Management Lead | Lead Bank | Remote | Wellfound | https://wellfound.com/jobs/3924749-program-management-lead | no post date shown in listing/search snippet |
-| 2026-08-26 | Senior Project Manager | Slide Insurance | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/slideinsurance/jobs/5126908008 | no post date shown in listing/search snippet |
-| 2026-08-26 | Insurance Senior Project Manager, Enterprise Project Mgmt Office | EPIC Brokers | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/edgewoodpartnersinsurancecenter/jobs/8555139002 | no post date shown in listing/search snippet |
-| 2026-08-26 | Project Manager - Insurance | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7785422 | no post date shown in listing/search snippet |
-| 2026-08-26 | Credit Analysis-FIG/NBFC/FIS (Delivery Lead/Manager) | Acuity Analytics | India (city not stated) | LinkedIn | https://in.linkedin.com/jobs/view/credit-analysis-fig-nbfc-fis-delivery-lead-manager-at-acuity-analytics-4403373665 | no post date shown in listing/search snippet |
-| 2026-08-27 | Test Delivery Manager - Digital Wealth & Banking | QualityKiosk Technologies | Anywhere in India/Multiple Locations | Jobaaj | https://www.jobaaj.com/job/qualitykiosk-technologie-qualitykiosk-technologies-test-delivery-manager-digital-wealth-banking-anywhere-in-india-multiple-locations-8-to-10-years-1074920 | no post date shown in listing/search snippet |
-| 2026-08-27 | Implementations Consultant | FIS® Amount™ | Chicago, IL | Greenhouse | https://job-boards.greenhouse.io/amount/jobs/5057434007 | no post date shown in listing/search snippet |
-| 2026-08-27 | Agile Delivery Manager | Momentum Financial Services Group | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/momentumfinancialservicesgroup/jobs/4681628008 | no post date shown in listing/search snippet |
-| 2026-08-28 | QA and Test Manager | Procentia Pensions Software Solutions | United Kingdom | LinkedIn | https://uk.linkedin.com/jobs/view/qa-and-test-manager-at-procentia-pensions-software-solutions-4104791556 | no post date shown in listing/search snippet |
-| 2026-08-28 | Business Solutions Project Delivery Manager | National Life Insurance Company | Addison, TX or Montpelier, VT | Greenhouse | https://job-boards.greenhouse.io/nationallifeinsurancecompany/jobs/4058299009 | no post date shown in listing/search snippet |
-| 2026-08-28 | Fintech Implementation Manager | Sunrise Banks | Sioux Falls, SD | Indeed | https://www.indeed.com/viewjob?jk=0a4e63bce510eee3 | no post date shown in listing/search snippet |
-| 2026-08-28 | Technical Delivery Lead – FinTech & Banking Platforms (Consulting) | Intellibus | Reston, VA | Indeed | https://www.indeed.com/viewjob?jk=bdd9a12b0d1e31ea | no post date shown in listing/search snippet |
-| 2026-08-28 | Senior Tech Delivery Lead (Life Insurance) | Intellibus | Reston, VA | Indeed | https://www.indeed.com/viewjob?jk=90867be4eb4edffb | no post date shown in listing/search snippet |
-| 2026-08-28 | QA Manager | Judi Health | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capitalrx/jobs/5289148008 | no post date shown in listing/search snippet |
-| 2026-08-28 | Manual QA Analyst | LoanStreet Inc | Not stated in listing | Greenhouse | https://boards.greenhouse.io/loanstreetinc/jobs/4001277005 | no post date shown in listing/search snippet |
-| 2026-08-31 | Project Manager | Momentum Financial Services Group | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/momentumfinancialservicesgroup/jobs/5160167008 | no post date shown in listing/search snippet |
-| 2026-08-31 | Automation Tester | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7768216 | no post date shown in listing/search snippet |
-| 2026-08-31 | Senior Onboarding Manager | kennek | London | Wellfound | https://wellfound.com/jobs/4379173-senior-onboarding-manager | no post date shown in listing/search snippet; title logged under the closer PM/Delivery category per §2's tie-break rule — role covers discovery/configuration/testing/training/go-live for lending-tech clients, i.e. implementation-manager-type work |
-| 2026-09-01 | QA Analyst - Cash Management Systems | Yethi Consulting Private Limited | Maharashtra | Jobaaj | https://www.jobaaj.com/job/yethi-consulting-private-limited-qa-analyst-cash-management-systems-maharashtra-3-to-7-years-959186 | no post date shown in listing/search snippet |
-| 2026-09-01 | Senior QA Automation Engineer | Aperia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/aperiasolutions/jobs/5223434007 | no post date shown in listing/search snippet |
-| 2026-09-01 | Senior Project Manager - SaaS Deployments | AIO Logic | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/aiologic/jobs/4364467009 | no post date shown in listing/search snippet |
-| 2026-09-02 | Technical Project Manager - III (Agile Project Manager) | Zinnia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/zinnia/jobs/4613193006 | no post date shown in listing/search snippet |
-| 2026-09-02 | Director, Program Management | Zinnia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/zinnia/jobs/4405456006 | no post date shown in listing/search snippet |
-| 2026-09-02 | Technical Project Manager IV | Zinnia | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/zinnia/jobs/4405546006 | no post date shown in listing/search snippet |
-| 2026-09-02 | QA Chapter Lead and Automation Engineer (f/m/x) - Corporate Bank Technology - Merchant Solutions | Deutsche Bank | Berlin | Glassdoor | https://www.glassdoor.com/job-listing/qa-chapter-lead-and-automation-engineer-f-m-x-corporate-bank-technology-merchant-solutions-deutsche-bank-JV_IC2622109_KO0,90_KE91,104.htm?jl=1009811475913 | no post date shown in listing/search snippet |
-| 2026-09-03 | Lead Delivery Manager | Boku | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/boku/jobs/5570530004 | no post date shown in listing/search snippet |
-| 2026-09-03 | Delivery Lead, FinCrime and Cybersecurity (Toronto - Hybrid) | Capco | Toronto | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7244975 | no post date shown in listing/search snippet |
-| 2026-09-03 | Cloud Delivery Lead - AWS, GCP, Microsoft Azure | Capco | Not stated in listing | Greenhouse | https://boards.greenhouse.io/capco/jobs/2159124 | no post date shown in listing/search snippet |
-| 2026-09-03 | Senior Project Manager | Insurity | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/insurityllc/jobs/4290123009 | no post date shown in listing/search snippet |
-| 2026-09-04 | Project Manager (1-year Contract) | Momentum Financial Services Group | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/momentumfinancialservicesgroup/jobs/5142299008 | no post date shown in listing/search snippet |
-| 2026-09-04 | PMO | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/8089704 | no post date shown in listing/search snippet |
-| 2026-09-04 | Project Manager - Limited Partner Services | Alpha Financial Markets Consulting | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/alphafmcroles/jobs/8201841002 | no post date shown in listing/search snippet |
-| 2026-09-04 | PM/PMO- Banking/ Financial services Domain | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/8046173 | no post date shown in listing/search snippet |
-| 2026-09-07 | Delivery Lead, Corporate Banking Implementation | Capco | Poland | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7578161 | no post date shown in listing/search snippet |
-| 2026-09-07 | Lead Tester | Capco | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/capco/jobs/7126944 | no post date shown in listing/search snippet |
-| 2026-09-08 | Test Manager / QA Manager, Life Insurance (1-year renewable contract) | Evolution Singapore | Singapore | LinkedIn | https://sg.linkedin.com/jobs/view/test-manager-qa-manager-life-insurance-1-year-renewable-contract-at-evolution-singapore-4399111720 | no post date shown in listing/search snippet |
-| 2026-09-11 | Delivery Lead - Delivery & Change CoE NZ | ANZ | Bengaluru, Karnataka | Jobaaj | https://www.jobaaj.com/job/anz-delivery-lead-delivery-change-coe-nz-bengaluru-bangalore-karnataka-10-to-12-years-736009 | no post date shown in listing/search snippet |
-| 2026-09-11 | Senior Manager, Quality Engineering | Sardine | Remote, United States | Wellfound | https://wellfound.com/jobs/4573090-senior-manager-quality-engineering | no post date shown in listing/search snippet |
-| 2026-09-11 | Senior QA Automation Engineer | SaveIN | Gurgaon | Wellfound | https://wellfound.com/jobs/4275944-senior-qa-automation-engineer | no post date shown in listing/search snippet |
-| 2026-09-11 | Senior QA Automation Engineer (Remote) | Upgrade | Remote | Wellfound | https://wellfound.com/jobs/1175222-senior-qa-automation-engineer-remote | no post date shown in listing/search snippet |
-| 2026-09-11 | Junior QA Engineer | Decentro | Bengaluru | Wellfound | https://wellfound.com/jobs/1407311-junior-qa-engineer | no post date shown in listing/search snippet |
-| 2026-09-11 | Quality Assurance Analyst | Oodle Finance | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/oodlefinance/jobs/8755753002 | no post date shown in listing/search snippet |
-| 2026-09-11 | Quality Assurance Specialist II | Affirm | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/affirm/jobs/6290347003 | no post date shown in listing/search snippet |
-| 2026-09-11 | QA Automation Engineer | Phizenix | Not stated in listing | Greenhouse | https://job-boards.greenhouse.io/phizenix/jobs/5398758008 | no post date shown in listing/search snippet |
 
 ## Freelancing Leads
 Format: | Date Found | Title | Client/Company | Location | Source | URL |
+|---|---|---|---|---|---|
+
+## SAP GTS Leads
+Format: | Date Found | Title | Company | Location | Source | URL |
 |---|---|---|---|---|---|
 
 ## Run log — 2026-08-14 (run 2)
@@ -595,6 +599,53 @@ Weekday scheduled trigger (9am IST routine). Re-verified `docs/SCOUT.md` and `se
 | Upwork, Freelancer.com, Guru (WebSearch, Freelancing §14) | skipped | Queried 2026-09-09/2026-09-10 with 0 leads; rotated to Toptal/PeoplePerHour this run instead. |
 
 New postings logged: 0. Unverified leads logged: 5 (see Unverified Leads table above — the Wellfound QA sweep was particularly productive this run). Freelancing leads logged: 0 (22nd consecutive run with none — pattern well-documented in prior run logs, not re-elaborated here). Rejected: 0.
+
+## Logic fix + SAP GTS widget — 2026-09-11 (same day, ad hoc)
+
+The user flagged that the dashboard showed 5 "Total jobs tracked" against 80
+"Unverified leads" and asked to fix the logic, plus asked for a new SAP GTS
+widget. Per `docs/SCOUT.md`'s revised §5/§6 (see the note at the top of that
+document): the "must confirm an absolute date before counting as New" bar
+was almost never satisfiable, since most job-board search snippets never
+show one — so nearly every genuine match was defaulting into Unverified
+Leads instead of the main list, despite there being no actual evidence any
+of them were stale.
+
+**Retroactive migration:** all 83 rows in the Unverified Leads table (2026-08-15 through
+2026-09-11, including 3 added by a same-day digest run that landed on
+`master` while this fix was in review) were reviewed — every single one had reason
+"no post date shown in listing/search snippet" (none had a relative date
+like "2 weeks ago" or a mirror-site-date conflict, which would still route
+to the narrower Unverified bucket under the revised rules). All 83 were
+moved into the main table above with `Status: New`, preserving their
+original "Date First Seen" dates (not reset to today). The Unverified Leads
+table is now empty going forward and should stay that way except for
+genuinely ambiguous cases per the revised §5 bucket 3.
+
+**SAP GTS widget (§15, new):** searched LinkedIn (global + India) for SAP
+GTS (Global Trade Services) roles. Found several genuine SAP-GTS-titled
+candidates with confirmed title/company/URL — Apple (SAP Global Trade
+Services (GTS) Functional Analyst), Infosys (SAP GTS Consultant), ArchLynk
+(SAP GTS Specialist) — but none had a post date confirmable within the
+widget's 15-day window, so none were logged, per §15's explicit
+unconfirmed-date-skip rule (chosen deliberately to match the Freelancing
+widget's convention rather than the main list's new default-to-New rule).
+Also excluded several "GTS" false positives that don't involve the SAP
+product at all: HSBC "Global Trade Solutions" (a business line, not SAP
+GTS), and "Global Trading Systems" (an unrelated market-making firm) —
+per §15's explicit guidance to require the SAP connection to be explicit.
+The SAP GTS Leads table starts empty; expect it to take a while to
+populate, the same way Freelancing did (0 leads for its first ~20 runs).
+
+`docs/SCOUT.md` and `docs/index.html` were both updated in this same
+change (not a routine run — outside the normal "don't touch SCOUT.md"
+constraint, since the user explicitly asked for this fix).
+
+**Merge note:** this branch was rebased against `master` after a second
+2026-09-11 digest run (see the `Run log — 2026-09-11 (run 2)` entry below)
+landed 3 more Unverified Leads (Oodle Finance, Affirm, Phizenix) before this
+PR was merged. Those 3 were migrated into the main table the same way as the
+other 80, consistent with this fix.
 
 ## Run log — 2026-09-11 (run 2)
 
