@@ -117,6 +117,7 @@ Format: | Date Found | Title | Client/Company | Location | Source | URL |
 ## SAP GTS Leads
 Format: | Date Found | Title | Company | Location | Source | URL |
 |---|---|---|---|---|---|
+| 2026-09-11 | SAP GTS Functional Consultant | Tech Mahindra | Bengaluru, Karnataka | Naukri | https://www.naukri.com/job-listings-sap-gts-functional-consultant-tech-mahindra-bengaluru-5-to-10-years-070926023873 |
 
 ## Run log — 2026-08-14 (run 2)
 
@@ -681,3 +682,65 @@ Second run today (scheduled trigger fired again same weekday). Re-verified `docs
 | Freelancer.com, Toptal, PeoplePerHour (WebSearch, Freelancing §14) | skipped | Toptal/PeoplePerHour queried this morning (run 1) with 0 leads; Freelancer.com rotated out this run to prioritize Upwork/Guru instead. |
 
 New postings logged: 0. Unverified leads logged: 3 (see Unverified Leads table above). Freelancing leads logged: 0 (23rd consecutive run with none). Rejected: 0.
+
+## SAP GTS widget — Naukri coverage gap fix, 2026-09-11 (same day, ad hoc)
+
+The user manually found a live, on-scope posting
+(`naukri.com/job-listings-sap-gts-functional-consultant-tech-mahindra-bengaluru-5-to-10-years-070926023873`)
+that wasn't showing anywhere on the dashboard, and flagged the SAP GTS
+widget as useless as a result. Root cause: the widget's only search to date
+(during the 2026-09-11 logic-fix PR) queried LinkedIn only — `docs/SCOUT.md`
+§15's Sources subsection never explicitly named Naukri or Indeed, so they
+were never checked even though both remain core §4 sources post-purge.
+
+**Naukri URL date-encoding confirmed reliable:** cross-checked the trailing
+numeric ID on 7 different Naukri postings against WebSearch's own "Posted
+<date>" narrative summaries for those same postings — 6 matched exactly, 1
+was off by a day (likely a display/index rounding quirk). The first 6 digits
+are a DDMMYY-encoded post date. Applied to the user's URL: `070926` = 2026-09-07,
+4 days old, comfortably inside the widget's 15-day window. Logged to the SAP
+GTS Leads table above with Source: Naukri.
+
+**Broader sweep this same session** (Naukri, Indeed, LinkedIn, various SAP
+GTS title queries) found no other qualifying postings: several Naukri/LinkedIn
+results decoded or ID-matched as confirmed-stale (outside 15 days), one
+Naukri "recruiter-job-listings" URL had a shorter ID that doesn't fit the
+DDMMYY pattern so its date couldn't be confirmed (skipped per §15's strict
+rule), and Indeed returned only aggregator/category hub pages with no
+individual posting URLs to log.
+
+`docs/SCOUT.md` §15 was updated in this same change to explicitly list
+Naukri and Indeed as SAP GTS sources (not just LinkedIn) — see that section
+for the current source list. Not a routine run; SCOUT.md touched because the
+user explicitly asked why the widget wasn't showing results.
+
+## Experience-level query bias added — 2026-09-11 (same day, ad hoc)
+
+The user shared 3 Naukri category-search URLs (Quality Manager, experience
+14 years; Project Management, experience 14 years; SAP GTS Consultant,
+experience 7 years) and asked to incorporate them. Ran equivalent
+`site:naukri.com` searches live with matching experience-range phrasing
+(`"10 to 15 years"` / `"12 to 17 years"` / `"13 to 18 years"` for Quality
+Manager and Project Management; `"5 to 10 years"` / `"6 to 11 years"` /
+`"7 to 12 years"` for SAP GTS Consultant).
+
+**Result: 0 new qualifying postings.** Every Quality Manager/Project
+Manager result was off-sector (construction, manufacturing, generic
+consulting/staffing firms — RIB Software, Vishay, Corporate Destination, S M
+Consultants, Siemens, Iquest, Tyzer Technologies, Touchzing Media — none
+BFSI/InsurTech/lending/retirement per §3) except Barclays and EXL, which are
+on-sector but confirmed stale via Naukri URL date-decoding (Barclays: Jan 5,
+2026; EXL: Nov 19, 2025 — both far outside the 3-day window). Every SAP GTS
+Consultant result decoded to a post date more than 15 days old (IT SCIENT,
+TCS, Moxieit Digital ×2, VHR Solutions — all June 2026 or earlier), except
+one Next-Link Solutions "recruiter-job-listings" URL whose shorter ID format
+doesn't fit the DDMMYY pattern and couldn't be date-confirmed (skipped per
+the strict rule).
+
+**Going forward:** per the user's choice, `docs/SCOUT.md` §2 and §15 were
+updated to bias future search queries toward the user's actual experience
+level (~14 years for Quality Manager/Project Manager, ~7 years for SAP GTS)
+*in addition to* the existing sector/domain terms — a bare keyword+experience
+query with no sector term returns mostly off-sector noise, as this session's
+live test demonstrated, so the sector filter stays mandatory alongside the
+new experience bias.

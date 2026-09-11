@@ -49,6 +49,18 @@ Seniority: **IC/Analyst through Senior Manager / Director** (broadened
 2026-08-14 — IC-level roles are now in scope, they were previously excluded).
 Still exclude VP+ / C-level roles.
 
+**Experience-level query bias (added 2026-09-11):** the user's own profile is
+~14 years of PM/QA experience. When constructing search queries for §4's
+sources, prefer including an explicit experience-level term/filter matching
+this (e.g. `"10 to 15 years"`, `"12 to 17 years"`, `"13 to 18 years"` for
+Naukri's phrasing, or an equivalent seniority cue for LinkedIn/Indeed) *in
+addition to* — never instead of — the sector/domain terms from §3. A bare
+keyword+experience query with no sector term (e.g. just `"quality manager"
+14 years` with nothing BFSI-related) returns mostly off-sector noise, as
+confirmed 2026-09-11: a live test of exactly that pattern surfaced construction,
+manufacturing, and generic-consulting postings almost exclusively, all
+excluded per §3's domain-signal requirement. Sector terms stay mandatory.
+
 If a title doesn't cleanly fit either category, still log it but pick the
 closer of the two categories — the dashboard only has these two tabs plus
 "All".
@@ -97,9 +109,9 @@ fetching the page body.
 
 | # | Source | Query method | Example query |
 |---|---|---|---|
-| 1 | LinkedIn Jobs (primary) | `WebSearch`, `site:linkedin.com/jobs` (global) and `site:in.linkedin.com/jobs` (India) | `site:linkedin.com/jobs project manager insurtech OR banking` |
-| 2 | Naukri (secondary, India-focused) | `WebSearch`, `site:naukri.com` | `site:naukri.com delivery manager banking OR insurance` |
-| 3 | Indeed (secondary, global) | `WebSearch`, `site:indeed.com`, `site:in.indeed.com`, or other country domains (`site:uk.indeed.com`, etc.) as needed | `site:in.indeed.com project manager insurance` |
+| 1 | LinkedIn Jobs (primary) | `WebSearch`, `site:linkedin.com/jobs` (global) and `site:in.linkedin.com/jobs` (India) | `site:linkedin.com/jobs project manager insurtech OR banking "10+ years"` |
+| 2 | Naukri (secondary, India-focused) | `WebSearch`, `site:naukri.com` | `site:naukri.com delivery manager banking OR insurance "12 to 17 years"` |
+| 3 | Indeed (secondary, global) | `WebSearch`, `site:indeed.com`, `site:in.indeed.com`, or other country domains (`site:uk.indeed.com`, etc.) as needed | `site:in.indeed.com project manager insurance senior` |
 | 4 | Target employer career pages (optional, see §3) | `WebSearch`, `site:<employer-domain>/careers` | — |
 | 5 | GitHub issues on this repo (manual leads) | `mcp__github__list_issues` (state OPEN) on `kphani007/AI-Job-Search` | — |
 
@@ -548,6 +560,12 @@ as §2 (exclude VP+/C-level). No PM-vs-QA split here — SAP GTS work spans
 functional, technical, and project roles indiscriminately, so there's no
 `pm`/`qa` categorization to make; see the Dashboard section below.
 
+**Experience-level query bias (added 2026-09-11):** the user's SAP GTS
+experience is ~7 years — prefer queries that include an explicit
+experience-level term matching this (e.g. `"5 to 10 years"`, `"6 to 11
+years"`, `"7 to 12 years"` for Naukri's phrasing) alongside the `"SAP GTS"`
+term itself, same rationale as §2's experience-level bias for the main list.
+
 **Watch for false positives on the bare acronym "GTS"** — it collides with
 unrelated things (HSBC's "Global Trade Solutions" business line, "Global
 Trading Systems" the market-making firm, generic "Global Trade Services"
@@ -559,11 +577,36 @@ not in scope.
 
 ### Sources
 
-Use `WebSearch` with `site:` filters, same `WebFetch`-blocked caveat as
-§4/§7 — `site:linkedin.com/jobs "SAP GTS"`, `site:in.linkedin.com/jobs
-"SAP GTS"`, and opportunistically any of the §4/§14 sources if SAP GTS
-postings turn up there too. Don't use `jobs.lever.co` (see the removal
-note in §4).
+**Run all three main sources every time this widget is checked — not just
+LinkedIn.** (Fixed 2026-09-11 after the user manually found a qualifying
+Naukri posting that a LinkedIn-only sweep had missed entirely; see
+`seen-jobs.md`'s dated addendum for the full incident.) Use `WebSearch` with
+`site:` filters, same `WebFetch`-blocked caveat as §4/§7:
+
+- `site:linkedin.com/jobs "SAP GTS"` and `site:in.linkedin.com/jobs "SAP GTS"`
+- `site:naukri.com "SAP GTS" "7 to 12 years"` (rotate the experience phrase
+  per the bias noted in Role scope above — `"5 to 10 years"`, `"6 to 11
+  years"`, etc.)
+- `site:indeed.com "SAP GTS"` / `site:in.indeed.com "SAP GTS"`
+
+Also opportunistically check any of the §4/§14 sources if SAP GTS postings
+turn up there too. Don't use `jobs.lever.co` (see the removal note in §4),
+and don't use `jobaaj.com`/`greenhouse.io`/`wellfound.com`/`glassdoor.*`
+(removed 2026-09-11, see §4) even for this widget.
+
+**Two ways to confirm a post date, beyond an explicit date in the snippet:**
+1. **Naukri URL date encoding** — on `naukri.com/job-listings-...-NNNNNN` URLs
+   (not the shorter `recruiter-job-listings-...` variant, which uses a
+   different, unconfirmed ID scheme), the trailing numeric ID's first 6
+   digits are typically a `DDMMYY`-encoded post date. Validated 2026-09-11
+   against 6 postings where `WebSearch` also surfaced an explicit "Posted
+   <date>" narrative summary — 6/6 matched (one off by a day, likely a
+   display/index rounding quirk). Trust this when present; still skip if the
+   ID doesn't look like this pattern.
+2. **LinkedIn job-ID magnitude** — the existing heuristic (see the 2026-08-15
+   run log entries): an ID well below the current run's confirmed-recent
+   range (roughly 4.44–4.49B as of early September 2026, drifts upward over
+   time) means stale: treat as a confirmed exclusion, not merely unverified.
 
 ### Recency window
 
