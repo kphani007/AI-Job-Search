@@ -713,3 +713,34 @@ individual posting URLs to log.
 Naukri and Indeed as SAP GTS sources (not just LinkedIn) — see that section
 for the current source list. Not a routine run; SCOUT.md touched because the
 user explicitly asked why the widget wasn't showing results.
+
+## Experience-level query bias added — 2026-09-11 (same day, ad hoc)
+
+The user shared 3 Naukri category-search URLs (Quality Manager, experience
+14 years; Project Management, experience 14 years; SAP GTS Consultant,
+experience 7 years) and asked to incorporate them. Ran equivalent
+`site:naukri.com` searches live with matching experience-range phrasing
+(`"10 to 15 years"` / `"12 to 17 years"` / `"13 to 18 years"` for Quality
+Manager and Project Management; `"5 to 10 years"` / `"6 to 11 years"` /
+`"7 to 12 years"` for SAP GTS Consultant).
+
+**Result: 0 new qualifying postings.** Every Quality Manager/Project
+Manager result was off-sector (construction, manufacturing, generic
+consulting/staffing firms — RIB Software, Vishay, Corporate Destination, S M
+Consultants, Siemens, Iquest, Tyzer Technologies, Touchzing Media — none
+BFSI/InsurTech/lending/retirement per §3) except Barclays and EXL, which are
+on-sector but confirmed stale via Naukri URL date-decoding (Barclays: Jan 5,
+2026; EXL: Nov 19, 2025 — both far outside the 3-day window). Every SAP GTS
+Consultant result decoded to a post date more than 15 days old (IT SCIENT,
+TCS, Moxieit Digital ×2, VHR Solutions — all June 2026 or earlier), except
+one Next-Link Solutions "recruiter-job-listings" URL whose shorter ID format
+doesn't fit the DDMMYY pattern and couldn't be date-confirmed (skipped per
+the strict rule).
+
+**Going forward:** per the user's choice, `docs/SCOUT.md` §2 and §15 were
+updated to bias future search queries toward the user's actual experience
+level (~14 years for Quality Manager/Project Manager, ~7 years for SAP GTS)
+*in addition to* the existing sector/domain terms — a bare keyword+experience
+query with no sector term returns mostly off-sector noise, as this session's
+live test demonstrated, so the sector filter stays mandatory alongside the
+new experience bias.
