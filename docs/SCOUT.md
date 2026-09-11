@@ -98,14 +98,10 @@ fetching the page body.
 | # | Source | Query method | Example query |
 |---|---|---|---|
 | 1 | LinkedIn Jobs (primary) | `WebSearch`, `site:linkedin.com/jobs` (global) and `site:in.linkedin.com/jobs` (India) | `site:linkedin.com/jobs project manager insurtech OR banking` |
-| 2 | Jobaaj (secondary / LinkedIn mirror, India-focused) | `WebSearch`, `site:jobaaj.com` | `site:jobaaj.com quality assurance manager insurance India` |
-| 3 | Naukri (secondary, India-focused) | `WebSearch`, `site:naukri.com` | `site:naukri.com delivery manager banking OR insurance` |
-| 4 | Indeed (secondary, global) | `WebSearch`, `site:indeed.com`, `site:in.indeed.com`, or other country domains (`site:uk.indeed.com`, etc.) as needed | `site:in.indeed.com project manager insurance` |
-| 5 | Greenhouse job boards (secondary, global — added 2026-08-14) | `WebSearch`, `site:boards.greenhouse.io` or `site:job-boards.greenhouse.io` | `site:boards.greenhouse.io project manager insurtech OR lending` |
-| 6 | Wellfound/AngelList (secondary, startup-focused — added 2026-08-14) | `WebSearch`, `site:wellfound.com` | `site:wellfound.com project manager insurtech OR fintech` |
-| 7 | Glassdoor (opportunistic — added 2026-08-14) | `WebSearch`, `site:glassdoor.com` or `site:glassdoor.co.in` | `site:glassdoor.co.in project manager banking` |
-| 8 | Target employer career pages (optional, see §3) | `WebSearch`, `site:<employer-domain>/careers` | — |
-| 9 | GitHub issues on this repo (manual leads) | `mcp__github__list_issues` (state OPEN) on `kphani007/AI-Job-Search` | — |
+| 2 | Naukri (secondary, India-focused) | `WebSearch`, `site:naukri.com` | `site:naukri.com delivery manager banking OR insurance` |
+| 3 | Indeed (secondary, global) | `WebSearch`, `site:indeed.com`, `site:in.indeed.com`, or other country domains (`site:uk.indeed.com`, etc.) as needed | `site:in.indeed.com project manager insurance` |
+| 4 | Target employer career pages (optional, see §3) | `WebSearch`, `site:<employer-domain>/careers` | — |
+| 5 | GitHub issues on this repo (manual leads) | `mcp__github__list_issues` (state OPEN) on `kphani007/AI-Job-Search` | — |
 
 **Lever job boards (`jobs.lever.co`) — removed 2026-08-15.** Lever was a
 source from 2026-08-14 to 2026-08-15. Dropped per direct user feedback:
@@ -120,7 +116,26 @@ confirm a Lever URL is still live before logging it (e.g. if `WebFetch` to
 lever.co ever becomes unblocked, verify before logging rather than trusting
 the search snippet).
 
-Run at least sources 1 and 9 every day; run the rest as supplementary
+**Jobaaj, Greenhouse, Wellfound, Glassdoor — removed 2026-09-11.** These four
+were sources from 2026-08-14/15 through 2026-09-11. Dropped per direct user
+feedback after clicking through to a Greenhouse-sourced posting (Affirm —
+Quality Assurance Specialist II) and finding "The job you are looking for is
+no longer open" — the same dead-link failure mode as the Lever removal above,
+just on a longer fuse (weeks instead of a day). The user's explicit
+instruction: only LinkedIn, Naukri, and Indeed are trustworthy/useful enough
+to keep tracking — "ignore rest of the job postings. no use of having such
+posts." All 72 previously-logged postings from these four sources were
+retroactively removed from the main table in the same change (see
+`seen-jobs.md`'s `## Removed — non-LinkedIn/Naukri/Indeed sources` section
+for the full list). Do not re-add `site:jobaaj.com`, `site:*.greenhouse.io`,
+`site:wellfound.com`, or `site:glassdoor.*` as sources for the main BFSI list
+without new explicit user instruction. This does **not** apply to the
+Freelancing widget (§14, its own separate source list — Upwork, Freelancer,
+Toptal, PeoplePerHour, Guru — untouched) or the SAP GTS widget (§15,
+untouched) — the user was explicit that this restriction is for the main
+list only.
+
+Run at least sources 1 and 5 every day; run the rest as supplementary
 sweeps to widen coverage — you don't have to exhaust every source every
 single run, but rotate through all of them across the week rather than
 always skipping the same ones. Rotate/vary the exact query keywords
@@ -128,12 +143,7 @@ run-to-run (role terms × sector terms, including the new IC-level and
 BFSI/lending terms from §2–3) rather than repeating one fixed query, to
 surface postings a single fixed query would miss.
 
-Sources 5–6 were spot-checked on 2026-08-14 and confirmed to return
-individual, relevant postings via `WebSearch` (e.g. Greenhouse boards for
-Kin Insurance, LendingTree, Pie Insurance) — see §7 for the reachability
-table.
-
-Source 9 exists because the user sometimes files a GitHub issue with a job
+Source 5 exists because the user sometimes files a GitHub issue with a job
 lead they found manually (e.g. issues #2, #5 in this repo's history). Treat
 each open issue as a candidate lead: extract title/company/URL from the issue
 body, log it with `Source: <original source> (GitHub issue lead)`, and note
