@@ -93,6 +93,8 @@ h1 { font-size: 1.5rem; margin: 0 0 6px; letter-spacing: -0.01em; }
   cursor: pointer; white-space: nowrap;
 }
 .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.tab-btn.gts-nav { border-color: var(--gts-color); color: var(--gts-color); }
+.tab-btn.gts-nav:hover { background: var(--gts-soft); }
 
 section { margin-bottom: 28px; }
 h2 { font-size: 1.05rem; margin: 0 0 12px; }
@@ -139,69 +141,26 @@ h2 { font-size: 1.05rem; margin: 0 0 12px; }
 footer { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 30px; }
 </style>
 
-<div class="wrap">
-  <header>
-    <h1>Job Watch</h1>
-    <div class="meta-row">
-      <span>Last updated: 11 Sep 2026, 05:50 PM IST</span>
-    </div>
-    <div class="stat-strip">
-      <div class="stat-tile"><div class="num" id="stat-total"></div><div class="label">Total jobs tracked</div></div>
-      <div class="stat-tile"><div class="num" id="stat-today"></div><div class="label">Added today</div></div>
-      <div class="stat-tile"><div class="num" id="stat-unverified"></div><div class="label">Unverified leads</div></div>
-      <div class="stat-tile"><div class="num" id="stat-freelance"></div><div class="label">Freelance gigs</div></div>
-      <div class="stat-tile"><div class="num" id="stat-gts"></div><div class="label">SAP GTS roles</div></div>
-    </div>
-  </header>
-
-  <div class="controls">
-    <input id="search" type="text" placeholder="Search title, company, location&hellip;" autocomplete="off">
-    <div class="tabs">
-      <button class="tab-btn active" data-cat="all">All</button>
-      <button class="tab-btn" data-cat="pm">Project / Program / Delivery</button>
-      <button class="tab-btn" data-cat="qa">Quality / QA / Test</button>
-    </div>
-  </div>
-
-  <section id="new-today-section">
-    <h2>New Today</h2>
-    <div id="new-today-grid" class="card-grid"></div>
-    <div id="new-today-empty" class="empty-note" style="display:none;">No new postings added today.</div>
-  </section>
-
-  <section>
-    <h2>All Tracked Jobs</h2>
-    <div id="all-jobs-list" class="job-list"></div>
-    <div id="all-jobs-empty" class="empty-note" style="display:none;">No jobs match your filters.</div>
-  </section>
-
-  <section>
-    <h2>Unverified Leads <span class="section-hint">&mdash; reserved for rare, genuinely ambiguous cases (conflicting date signals, etc.) &mdash; not just a missing date.</span></h2>
-    <div id="unverified-list" class="job-list"></div>
-    <div id="unverified-empty" class="empty-note" style="display:none;">No unverified leads right now.</div>
-  </section>
-
-  <section>
-    <h2>Freelancing <span class="section-hint">&mdash; contract/freelance Testing &amp; PM gigs, any domain, last 15 days</span></h2>
-    <div id="freelance-list" class="job-list"></div>
-    <div id="freelance-empty" class="empty-note" style="display:none;">No freelance leads right now.</div>
-  </section>
-
-  <section>
-    <h2>SAP GTS <span class="section-hint">&mdash; any SAP Global Trade Services role, any employer, last 15 days</span></h2>
-    <div id="gts-list" class="job-list"></div>
-    <div id="gts-empty" class="empty-note" style="display:none;">No SAP GTS leads right now.</div>
-  </section>
-
-  <footer>Job Watch &middot; auto-generated daily &middot; data sourced from public job listings</footer>
-</div>
+<div id="root"></div>
 
 <script>
+/* --- Data block: the digest routine edits ONLY this script tag's contents. ---
+   Plain JS (no JSX) so array literals can keep being replaced the same way
+   as before — the React app below just reads these as globals. */
+const LAST_UPDATED = "11 Sep 2026, 05:50 PM IST";
 const ALL_JOBS = [{"date": "2026-08-07", "title": "Technical Project Manager (P&C Insurance Domain, BPM, Workflow Automation Platforms)", "company": "Prasha Consultancy Services Private Limited", "location": "India (city not stated)", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/technical-project-manager-p-c-insurance-domain-bpm-workflow-automation-platforms-at-prasha-consultancy-services-private-limited-4446047992", "status": "New", "category": "pm"}, {"date": "2026-08-07", "title": "Senior Delivery Manager - Life Insurance Domain", "company": "illumifin India", "location": "Pune City, Maharashtra", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/illumifin-senior-delivery-manager-life-insurance-domain-at-illumifin-india-4447227678", "status": "New", "category": "pm"}, {"date": "2026-08-10", "title": "Quality Assurance Manager - US Life Insurance Domain", "company": "illumifin India", "location": "Pune City, Maharashtra", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/illumifin-quality-assurance-manager-us-life-insurance-domain-at-illumifin-india-4447220709", "status": "New", "category": "qa"}, {"date": "2026-08-10", "title": "Associate Project Manager", "company": "eClerx", "location": "Pune, Maharashtra", "source": "LinkedIn (GitHub issue lead)", "url": "https://www.linkedin.com/jobs/view/4367307316/", "status": "New", "category": "pm"}, {"date": "2026-08-11", "title": "Senior Software Delivery Manager - Life Insurance", "company": "Visara Partners", "location": "Bengaluru, Karnataka", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/senior-software-delivery-manager-life-insurance-at-visara-partners-4449559557", "status": "New", "category": "pm"}, {"date": "2026-08-15", "title": "Portfolio Tooling & AI Enablement Analyst (Lending PMO)", "company": "Seneca Resources", "location": "Not stated in listing", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/portfolio-tooling-ai-enablement-analyst-lending-pmo-17186-at-seneca-resources-company-llc-4432577901", "status": "New", "category": "pm"}, {"date": "2026-08-15", "title": "Director / Senior Manager, Transformation & Change - Wealth Consumer Lending & Deposits", "company": "BMO U.S.", "location": "Illinois, United States", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/director-senior-manager-transformation-change-%E2%80%93-wealth-consumer-lending-deposits-at-bmo-u-s-4425981360", "status": "New", "category": "pm"}, {"date": "2026-08-19", "title": "Delivery Lead - Loan Operations", "company": "Acuity Knowledge Partners (Moody's Analytics)", "location": "Gurugram", "source": "Naukri", "url": "https://www.naukri.com/job-listings-delivery-lead-loan-operations-acuity-knowledge-partners-gurugram-7-to-10-years-240726501467", "status": "New", "category": "pm"}, {"date": "2026-08-20", "title": "Program Manager", "company": "Tenb Fintech", "location": "Gurugram", "source": "Naukri", "url": "https://www.naukri.com/job-listings-program-manager-tenb-fintech-gurugram-1-to-3-years-040425022346", "status": "New", "category": "pm"}, {"date": "2026-08-24", "title": "Technical Delivery Manager", "company": "Barclays Shared Services", "location": "Pune, Maharashtra", "source": "Naukri", "url": "https://www.naukri.com/job-listings-technical-delivery-manager-barclays-shared-services-pune-7-to-12-years-270726502768", "status": "New", "category": "pm"}, {"date": "2026-08-26", "title": "Credit Analysis-FIG/NBFC/FIS (Delivery Lead/Manager)", "company": "Acuity Analytics", "location": "India (city not stated)", "source": "LinkedIn", "url": "https://in.linkedin.com/jobs/view/credit-analysis-fig-nbfc-fis-delivery-lead-manager-at-acuity-analytics-4403373665", "status": "New", "category": "pm"}, {"date": "2026-08-28", "title": "QA and Test Manager", "company": "Procentia Pensions Software Solutions", "location": "United Kingdom", "source": "LinkedIn", "url": "https://uk.linkedin.com/jobs/view/qa-and-test-manager-at-procentia-pensions-software-solutions-4104791556", "status": "New", "category": "qa"}, {"date": "2026-08-28", "title": "Fintech Implementation Manager", "company": "Sunrise Banks", "location": "Sioux Falls, SD", "source": "Indeed", "url": "https://www.indeed.com/viewjob?jk=0a4e63bce510eee3", "status": "New", "category": "pm"}, {"date": "2026-08-28", "title": "Technical Delivery Lead – FinTech & Banking Platforms (Consulting)", "company": "Intellibus", "location": "Reston, VA", "source": "Indeed", "url": "https://www.indeed.com/viewjob?jk=bdd9a12b0d1e31ea", "status": "New", "category": "pm"}, {"date": "2026-08-28", "title": "Senior Tech Delivery Lead (Life Insurance)", "company": "Intellibus", "location": "Reston, VA", "source": "Indeed", "url": "https://www.indeed.com/viewjob?jk=90867be4eb4edffb", "status": "New", "category": "pm"}, {"date": "2026-09-08", "title": "Test Manager / QA Manager, Life Insurance (1-year renewable contract)", "company": "Evolution Singapore", "location": "Singapore", "source": "LinkedIn", "url": "https://sg.linkedin.com/jobs/view/test-manager-qa-manager-life-insurance-1-year-renewable-contract-at-evolution-singapore-4399111720", "status": "New", "category": "qa"}, {"date": "2026-09-11", "title": "Senior Manager, Program Delivery", "company": "Transamerica", "location": "Not stated in listing", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/senior-manager-program-delivery-at-transamerica-4430589342", "status": "New", "category": "pm"}];
 const TODAY_JOBS = [{"date": "2026-09-11", "title": "Senior Manager, Program Delivery", "company": "Transamerica", "location": "Not stated in listing", "source": "LinkedIn", "url": "https://www.linkedin.com/jobs/view/senior-manager-program-delivery-at-transamerica-4430589342", "status": "New", "category": "pm"}];
 const UNVERIFIED_JOBS = [];
 const FREELANCE_JOBS = [];
 const GTS_JOBS = [{"date": "2026-09-11", "title": "SAP GTS Functional Consultant", "company": "Tech Mahindra", "location": "Bengaluru, Karnataka", "source": "Naukri", "url": "https://www.naukri.com/job-listings-sap-gts-functional-consultant-tech-mahindra-bengaluru-5-to-10-years-070926023873", "category": "gts"}];
+</script>
+
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js" crossorigin></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useMemo, useRef } = React;
 
 function catLabel(cat) {
   if (cat === "pm") return "PM/Delivery";
@@ -210,136 +169,156 @@ function catLabel(cat) {
   return "Other";
 }
 
-function esc(s) {
-  const d = document.createElement("div");
-  d.textContent = s == null ? "" : s;
-  return d.innerHTML;
+// Result sets render newest-first everywhere on the page.
+function sortByDateDesc(jobs) {
+  return [...jobs].sort((a, b) => (b.date || "").localeCompare(a.date || ""));
 }
 
-function jobCardHTML(job) {
-  return '<a class="job-card" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
-    '<div class="job-title">' + esc(job.title) + '</div>' +
-    '<div class="job-sub">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</div>' +
-    '<div class="badge-row">' +
-      '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
-      '<span class="badge source">' + esc(job.source) + '</span>' +
-    '</div>' +
-  '</a>';
+function JobCard({ job }) {
+  return (
+    <a className="job-card" href={job.url} target="_blank" rel="noopener">
+      <div className="job-title">{job.title}</div>
+      <div className="job-sub">{job.company} &middot; {job.location}</div>
+      <div className="badge-row">
+        <span className={"badge " + job.category}>{catLabel(job.category)}</span>
+        <span className="badge source">{job.source}</span>
+      </div>
+    </a>
+  );
 }
 
-function jobRowHTML(job) {
-  return '<a class="job-row" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
-    '<span class="jr-title">' + esc(job.title) + '</span>' +
-    '<span class="jr-meta">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</span>' +
-    '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
-    '<span class="badge source">' + esc(job.source) + '</span>' +
-    '<span class="jr-date">' + esc(job.date) + '</span>' +
-  '</a>';
+function JobRow({ job, variant }) {
+  const cls = "job-row" + (variant ? " " + variant : "");
+  return (
+    <a className={cls} href={job.url} target="_blank" rel="noopener">
+      <span className="jr-title">{job.title}</span>
+      <span className="jr-meta">{job.company} &middot; {job.location}</span>
+      {job.category === "gts"
+        ? <span className="badge gts">SAP GTS</span>
+        : <span className={"badge " + job.category}>{catLabel(job.category)}</span>}
+      <span className="badge source">{job.source}</span>
+      {variant === "unverified" && <span className="badge unverified">Unverified</span>}
+      {variant === "freelance" && <span className="badge freelance">Freelance</span>}
+      <span className="jr-date">{job.date}</span>
+      {variant === "unverified" && job.reason && <span className="jr-reason">{job.reason}</span>}
+    </a>
+  );
 }
 
-function unverifiedRowHTML(job) {
-  return '<a class="job-row unverified" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
-    '<span class="jr-title">' + esc(job.title) + '</span>' +
-    '<span class="jr-meta">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</span>' +
-    '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
-    '<span class="badge source">' + esc(job.source) + '</span>' +
-    '<span class="badge unverified">Unverified</span>' +
-    '<span class="jr-date">' + esc(job.date) + '</span>' +
-    '<span class="jr-reason">' + esc(job.reason) + '</span>' +
-  '</a>';
+function ListSection({ title, hint, sectionRef, jobs, variant, emptyText, grid }) {
+  const sorted = useMemo(() => sortByDateDesc(jobs), [jobs]);
+  return (
+    <section ref={sectionRef}>
+      <h2>{title}{hint && <span className="section-hint"> &mdash; {hint}</span>}</h2>
+      {sorted.length === 0 ? (
+        <div className="empty-note">{emptyText}</div>
+      ) : grid ? (
+        <div className="card-grid">{sorted.map((job) => <JobCard key={job.url} job={job} />)}</div>
+      ) : (
+        <div className="job-list">{sorted.map((job) => <JobRow key={job.url} job={job} variant={variant} />)}</div>
+      )}
+    </section>
+  );
 }
 
-function freelanceRowHTML(job) {
-  return '<a class="job-row freelance" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
-    '<span class="jr-title">' + esc(job.title) + '</span>' +
-    '<span class="jr-meta">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</span>' +
-    '<span class="badge ' + job.category + '">' + catLabel(job.category) + '</span>' +
-    '<span class="badge source">' + esc(job.source) + '</span>' +
-    '<span class="badge freelance">Freelance</span>' +
-    '<span class="jr-date">' + esc(job.date) + '</span>' +
-  '</a>';
+function App() {
+  const [search, setSearch] = useState("");
+  const [activeCat, setActiveCat] = useState("all");
+  const gtsRef = useRef(null);
+
+  const filteredAll = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    return sortByDateDesc(ALL_JOBS).filter((job) => {
+      if (activeCat !== "all" && job.category !== activeCat) return false;
+      if (!q) return true;
+      const hay = (job.title + " " + job.company + " " + job.location).toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+  }, [search, activeCat]);
+
+  return (
+    <div className="wrap">
+      <header>
+        <h1>Job Watch</h1>
+        <div className="meta-row">
+          <span>Last updated: {LAST_UPDATED}</span>
+        </div>
+        <div className="stat-strip">
+          <div className="stat-tile"><div className="num">{ALL_JOBS.length}</div><div className="label">Total jobs tracked</div></div>
+          <div className="stat-tile"><div className="num">{TODAY_JOBS.length}</div><div className="label">Added today</div></div>
+          <div className="stat-tile"><div className="num">{UNVERIFIED_JOBS.length}</div><div className="label">Unverified leads</div></div>
+          <div className="stat-tile"><div className="num">{FREELANCE_JOBS.length}</div><div className="label">Freelance gigs</div></div>
+          <div className="stat-tile"><div className="num">{GTS_JOBS.length}</div><div className="label">SAP GTS roles</div></div>
+        </div>
+      </header>
+
+      <div className="controls">
+        <input
+          id="search"
+          type="text"
+          placeholder="Search title, company, location…"
+          autoComplete="off"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="tabs">
+          <button className={"tab-btn" + (activeCat === "all" ? " active" : "")} onClick={() => setActiveCat("all")}>All</button>
+          <button className={"tab-btn" + (activeCat === "pm" ? " active" : "")} onClick={() => setActiveCat("pm")}>Project / Program / Delivery</button>
+          <button className={"tab-btn" + (activeCat === "qa" ? " active" : "")} onClick={() => setActiveCat("qa")}>Quality / QA / Test</button>
+          <button
+            className="tab-btn gts-nav"
+            onClick={() => gtsRef.current && gtsRef.current.scrollIntoView({ behavior: "smooth", block: "start" })}
+          >
+            SAP GTS
+          </button>
+        </div>
+      </div>
+
+      <ListSection
+        title="Freelancing"
+        hint="contract/freelance Testing & PM gigs, any domain, last 15 days"
+        jobs={FREELANCE_JOBS}
+        variant="freelance"
+        emptyText="No freelance leads right now."
+      />
+
+      <ListSection
+        title="SAP GTS"
+        hint="any SAP Global Trade Services role, any employer, last 15 days"
+        sectionRef={gtsRef}
+        jobs={GTS_JOBS}
+        variant="gts"
+        emptyText="No SAP GTS leads right now."
+      />
+
+      <ListSection
+        title="New Today"
+        jobs={TODAY_JOBS}
+        grid
+        emptyText="No new postings added today."
+      />
+
+      <section>
+        <h2>All Tracked Jobs</h2>
+        {filteredAll.length === 0 ? (
+          <div className="empty-note">No jobs match your filters.</div>
+        ) : (
+          <div className="job-list">{filteredAll.map((job) => <JobRow key={job.url} job={job} />)}</div>
+        )}
+      </section>
+
+      <ListSection
+        title="Unverified Leads"
+        hint="reserved for rare, genuinely ambiguous cases (conflicting date signals, etc.) — not just a missing date."
+        jobs={UNVERIFIED_JOBS}
+        variant="unverified"
+        emptyText="No unverified leads right now."
+      />
+
+      <footer>Job Watch &middot; auto-generated daily &middot; data sourced from public job listings</footer>
+    </div>
+  );
 }
 
-function gtsRowHTML(job) {
-  return '<a class="job-row gts" href="' + esc(job.url) + '" target="_blank" rel="noopener">' +
-    '<span class="jr-title">' + esc(job.title) + '</span>' +
-    '<span class="jr-meta">' + esc(job.company) + ' &middot; ' + esc(job.location) + '</span>' +
-    '<span class="badge gts">SAP GTS</span>' +
-    '<span class="badge source">' + esc(job.source) + '</span>' +
-    '<span class="jr-date">' + esc(job.date) + '</span>' +
-  '</a>';
-}
-
-document.getElementById("stat-total").textContent = ALL_JOBS.length;
-document.getElementById("stat-today").textContent = TODAY_JOBS.length;
-document.getElementById("stat-unverified").textContent = UNVERIFIED_JOBS.length;
-document.getElementById("stat-freelance").textContent = FREELANCE_JOBS.length;
-document.getElementById("stat-gts").textContent = GTS_JOBS.length;
-
-const unverifiedList = document.getElementById("unverified-list");
-const unverifiedEmpty = document.getElementById("unverified-empty");
-if (UNVERIFIED_JOBS.length === 0) {
-  unverifiedEmpty.style.display = "block";
-} else {
-  unverifiedList.innerHTML = UNVERIFIED_JOBS.map(unverifiedRowHTML).join("");
-}
-
-const freelanceList = document.getElementById("freelance-list");
-const freelanceEmpty = document.getElementById("freelance-empty");
-if (FREELANCE_JOBS.length === 0) {
-  freelanceEmpty.style.display = "block";
-} else {
-  freelanceList.innerHTML = FREELANCE_JOBS.map(freelanceRowHTML).join("");
-}
-
-const gtsList = document.getElementById("gts-list");
-const gtsEmpty = document.getElementById("gts-empty");
-if (GTS_JOBS.length === 0) {
-  gtsEmpty.style.display = "block";
-} else {
-  gtsList.innerHTML = GTS_JOBS.map(gtsRowHTML).join("");
-}
-
-const newTodayGrid = document.getElementById("new-today-grid");
-const newTodayEmpty = document.getElementById("new-today-empty");
-if (TODAY_JOBS.length === 0) {
-  newTodayEmpty.style.display = "block";
-} else {
-  newTodayGrid.innerHTML = TODAY_JOBS.map(jobCardHTML).join("");
-}
-
-const allList = document.getElementById("all-jobs-list");
-const allEmpty = document.getElementById("all-jobs-empty");
-const searchInput = document.getElementById("search");
-const tabButtons = document.querySelectorAll(".tab-btn");
-let activeCat = "all";
-
-function render() {
-  const q = searchInput.value.trim().toLowerCase();
-  const filtered = ALL_JOBS.filter(function (job) {
-    if (activeCat !== "all" && job.category !== activeCat) return false;
-    if (!q) return true;
-    const hay = (job.title + " " + job.company + " " + job.location).toLowerCase();
-    return hay.indexOf(q) !== -1;
-  });
-  if (filtered.length === 0) {
-    allList.innerHTML = "";
-    allEmpty.style.display = "block";
-  } else {
-    allEmpty.style.display = "none";
-    allList.innerHTML = filtered.map(jobRowHTML).join("");
-  }
-}
-
-searchInput.addEventListener("input", render);
-tabButtons.forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    tabButtons.forEach(function (b) { b.classList.remove("active"); });
-    btn.classList.add("active");
-    activeCat = btn.getAttribute("data-cat");
-    render();
-  });
-});
-
-render();
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
 </script>
