@@ -559,11 +559,34 @@ not in scope.
 
 ### Sources
 
-Use `WebSearch` with `site:` filters, same `WebFetch`-blocked caveat as
-§4/§7 — `site:linkedin.com/jobs "SAP GTS"`, `site:in.linkedin.com/jobs
-"SAP GTS"`, and opportunistically any of the §4/§14 sources if SAP GTS
-postings turn up there too. Don't use `jobs.lever.co` (see the removal
-note in §4).
+**Run all three main sources every time this widget is checked — not just
+LinkedIn.** (Fixed 2026-09-11 after the user manually found a qualifying
+Naukri posting that a LinkedIn-only sweep had missed entirely; see
+`seen-jobs.md`'s dated addendum for the full incident.) Use `WebSearch` with
+`site:` filters, same `WebFetch`-blocked caveat as §4/§7:
+
+- `site:linkedin.com/jobs "SAP GTS"` and `site:in.linkedin.com/jobs "SAP GTS"`
+- `site:naukri.com "SAP GTS"`
+- `site:indeed.com "SAP GTS"` / `site:in.indeed.com "SAP GTS"`
+
+Also opportunistically check any of the §4/§14 sources if SAP GTS postings
+turn up there too. Don't use `jobs.lever.co` (see the removal note in §4),
+and don't use `jobaaj.com`/`greenhouse.io`/`wellfound.com`/`glassdoor.*`
+(removed 2026-09-11, see §4) even for this widget.
+
+**Two ways to confirm a post date, beyond an explicit date in the snippet:**
+1. **Naukri URL date encoding** — on `naukri.com/job-listings-...-NNNNNN` URLs
+   (not the shorter `recruiter-job-listings-...` variant, which uses a
+   different, unconfirmed ID scheme), the trailing numeric ID's first 6
+   digits are typically a `DDMMYY`-encoded post date. Validated 2026-09-11
+   against 6 postings where `WebSearch` also surfaced an explicit "Posted
+   <date>" narrative summary — 6/6 matched (one off by a day, likely a
+   display/index rounding quirk). Trust this when present; still skip if the
+   ID doesn't look like this pattern.
+2. **LinkedIn job-ID magnitude** — the existing heuristic (see the 2026-08-15
+   run log entries): an ID well below the current run's confirmed-recent
+   range (roughly 4.44–4.49B as of early September 2026, drifts upward over
+   time) means stale: treat as a confirmed exclusion, not merely unverified.
 
 ### Recency window
 
