@@ -67,6 +67,21 @@ confirmed 2026-09-11: a live test of exactly that pattern surfaced construction,
 manufacturing, and generic-consulting postings almost exclusively, all
 excluded per §3's domain-signal requirement. Sector terms stay mandatory.
 
+**Recency/jobAge query bias (added 2026-09-11):** in addition to the
+experience-level bias above, prefer very fresh postings — mirroring
+Naukri's own `jobAge` filter (`jobAge=1` = posted within the last day) and
+its relevance/date sort, e.g. `naukri.com/sap-gts-consultant-jobs?k=sap
+%20gts%20consultant&experience=7&jobAge=1`. `WebSearch` can't attach a job
+board's own URL query parameters — it does a text search over indexed
+content, not a live fetch of that exact URL — so approximate the same
+intent by: (a) rotating in freshness-signaling terms in queries (`today`,
+`just posted`, `new`), and (b) when a run turns up multiple qualifying
+candidates, prioritize the ones confirmed ≤1-2 days old (via the
+date-decoding/ID-magnitude techniques in §5/§15) when deciding what to
+surface first. This does **not** change the recency *window* (§6: 3 days
+main list / 15 days widgets) — it's about which candidates to search for
+and prioritize, not which to admit.
+
 If a title doesn't cleanly fit either category, still log it but pick the
 closer of the two categories — the dashboard only has these two tabs plus
 "All".
@@ -364,7 +379,16 @@ blocked — see run log)"`), matching the pattern already used in commit
 
 ## 11. Dashboard (`docs/index.html`) regeneration rules
 
-`docs/index.html` is a single self-contained static file. On every run:
+`docs/index.html` is a single self-contained static file. As of 2026-09-11
+it renders via **React, loaded from CDN with in-browser JSX transpilation
+(Babel Standalone)** — no build step, no `package.json`, no CI. This was a
+deliberate choice so the digest routine's regeneration procedure barely
+changes: the data (`ALL_JOBS`, `TODAY_JOBS`, `UNVERIFIED_JOBS`,
+`FREELANCE_JOBS`, `GTS_JOBS`, and now `LAST_UPDATED`) lives in its own
+plain (non-JSX) `<script>` tag near the top of the file, exactly as
+before — **only edit that block**, never the `<script type="text/babel">`
+block below it (that's the React app itself; it reads the data arrays as
+globals and shouldn't need to change for a routine run). On every run:
 
 1. Rebuild the `ALL_JOBS` JS array from every `seen-jobs.md` row whose Status
    is `New` **in the main table only** (exclude `Rejected - *` rows and
@@ -406,8 +430,10 @@ blocked — see run log)"`), matching the pattern already used in commit
     other three arrays and their stats.
 2. Rebuild `TODAY_JOBS` as the subset of `ALL_JOBS` whose `date` equals
    today's run date.
-3. Update the `Last updated:` timestamp in the `.meta-row` to the current
-   run's date/time (IST, matching the existing format, e.g.
+3. Update the `LAST_UPDATED` string constant (in the same plain data
+   `<script>` block, not the `.meta-row` markup — as of 2026-09-11 the React
+   app reads this constant rather than hand-typed HTML) to the current run's
+   date/time (IST, matching the existing format, e.g.
    `14 Aug 2026, 09:15 AM IST`).
 4. **Do not hand-write the stat-tile numbers.** They must be computed by the
    page's own script from `ALL_JOBS.length` / `TODAY_JOBS.length` /
@@ -415,12 +441,30 @@ blocked — see run log)"`), matching the pattern already used in commit
    the displayed counts can never drift out of sync with the actual job
    list — that drift was the root cause of the "5 tracked but list empty"
    dashboard bug. If you're hand-editing the HTML instead of regenerating it
-   wholesale, do not touch the stat tile markup at all.
-5. Everything else in the file (styles, controls, filter/search JS) is
+   wholesale, do not touch the React app's JSX or the stat-tile rendering.
+5. **Result sets render newest-first everywhere** (added 2026-09-11) — the
+   React app sorts every list (`ALL_JOBS`, `UNVERIFIED_JOBS`,
+   `FREELANCE_JOBS`, `GTS_JOBS`, `TODAY_JOBS`) by `date` descending at
+   render time. This is display-only: `seen-jobs.md`'s own tables stay
+   append-only in chronological (ascending) order per §9/§14/§15 — don't
+   reorder rows there, the sort happens purely in the browser.
+6. **Section order** (changed 2026-09-11, per direct user request): the page
+   now renders **Freelancing, then SAP GTS, then New Today, then All
+   Tracked Jobs, then Unverified Leads** — Freelancing and SAP GTS moved
+   above the main-list sections. If adding a new section in the future,
+   don't silently reorder this list without being asked.
+7. **SAP GTS nav pill** (added 2026-09-11): the tabs row has a 4th button,
+   "SAP GTS", styled distinctly (indigo/gts-colored outline, not a filled
+   "active" state like the other three). Unlike the All/PM/QA pills — which
+   filter the "All Tracked Jobs" list by category — this pill does **not**
+   filter anything; it smooth-scrolls the page to the SAP GTS section. SAP
+   GTS jobs stay in their own separate `GTS_JOBS` array/section, never
+   merged into `ALL_JOBS`'s pm/qa dataset.
+8. Everything else in the file (styles, the general page structure) is
    static scaffolding — leave it as-is unless explicitly asked to change the
-   UI. The search/tab filter controls apply to `ALL_JOBS` only — the
-   Unverified Leads, Freelancing, and SAP GTS sections are not wired to them
-   (small, review-queue-sized lists; add filtering later only if any of
+   UI. The search/tab filter controls (All/PM/QA) apply to `ALL_JOBS` only —
+   the Unverified Leads, Freelancing, and SAP GTS sections are not wired to
+   them (small, review-queue-sized lists; add filtering later only if any of
    them grows enough to need it).
 
 ## 12. When a source is unreachable
@@ -571,6 +615,13 @@ experience is ~7 years — prefer queries that include an explicit
 experience-level term matching this (e.g. `"5 to 10 years"`, `"6 to 11
 years"`, `"7 to 12 years"` for Naukri's phrasing) alongside the `"SAP GTS"`
 term itself, same rationale as §2's experience-level bias for the main list.
+
+**Recency/jobAge query bias (added 2026-09-11):** same rationale as §2's —
+mirror Naukri's `jobAge=1` filter concept (e.g. `naukri.com/sap-gts-
+consultant-jobs?k=sap%20gts%20consultant&experience=7&jobAge=1`) by
+rotating freshness terms into queries and prioritizing ≤1-2-day-old
+confirmed candidates when several qualify in one run. Doesn't change the
+15-day window, only search/prioritization emphasis.
 
 **Watch for false positives on the bare acronym "GTS"** — it collides with
 unrelated things (HSBC's "Global Trade Solutions" business line, "Global

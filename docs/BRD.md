@@ -11,7 +11,7 @@ the relevant bullet(s) here in the **same PR**. If this document and
 `docs/SCOUT.md` ever disagree, `docs/SCOUT.md` wins — treat that as a bug
 in this document and fix it.
 
-*Last updated: 2026-09-11.*
+*Last updated: 2026-09-11 (React dashboard rewrite).*
 
 ## 1. Objective
 
@@ -34,6 +34,11 @@ in this document and fix it.
 - **Experience bias** (added 2026-09-11): searches favor ~14 years
   experience for PM/QA roles, ~7 years for SAP GTS roles — always
   *alongside* the sector filter below, never replacing it
+- **Recency/jobAge bias** (added 2026-09-11): searches also favor very
+  fresh postings (mirroring Naukri's own `jobAge=1` = "posted in the last
+  day" filter) and prioritize ≤1-2-day-old confirmed candidates when
+  several qualify in one run — this changes what gets searched for/
+  prioritized, not the recency *window* itself (§6 below)
 
 ## 3. Sector Filter (main list only)
 
@@ -100,8 +105,24 @@ in this document and fix it.
 
 ## 10. Dashboard (`docs/index.html`)
 
-- 4 independent sections, each with its own stat tile: **All Tracked
-  Jobs**, **Unverified Leads**, **Freelancing**, **SAP GTS**
+- Built with **React, loaded from CDN with in-browser JSX transpilation**
+  (Babel Standalone) — no build step, no `package.json`, no CI (added
+  2026-09-11). The digest routine still edits a single plain `<script>`
+  block of data arrays exactly as before; the React app (a separate
+  `<script type="text/babel">` block) reads them as globals
+- **Section order** (top to bottom): Freelancing, SAP GTS, New Today, All
+  Tracked Jobs, Unverified Leads — Freelancing and SAP GTS were moved to
+  the top of the page (changed 2026-09-11)
+- Every list **sorts newest-first** (date descending) at render time —
+  display-only, `seen-jobs.md`'s own tables stay append-only/chronological
+- Filter tabs: **All / PM-Delivery / QA-Quality** filter the "All Tracked
+  Jobs" list by category, plus a 4th **SAP GTS** pill (added 2026-09-11,
+  styled distinctly) that jumps/scrolls to the SAP GTS section rather than
+  filtering — SAP GTS jobs stay in their own array, never merged into the
+  filterable pm/qa dataset
+- 5 independent stat tiles, each with its own count: **Total jobs
+  tracked**, **Added today**, **Unverified leads**, **Freelance gigs**,
+  **SAP GTS roles**
 - Stat counts are always computed from the underlying data arrays — never
   hand-typed, so they can't drift out of sync with the actual list
 
@@ -118,3 +139,7 @@ in this document and fix it.
   `docs/SCOUT.md` as of that date (source restriction to
   LinkedIn/Naukri/Indeed, default-to-New inclusion logic, SAP GTS widget,
   experience-level query bias).
+- **2026-09-11 (later same day)**: Added recency/jobAge query bias.
+  Dashboard rewritten with React (CDN, no build step); result sets now
+  sort newest-first; Freelancing and SAP GTS sections moved to the top of
+  the page; added a SAP GTS nav pill to the filter tabs row.
