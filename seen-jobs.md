@@ -18,6 +18,7 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 | 2026-08-28 | Technical Delivery Lead – FinTech & Banking Platforms (Consulting) | Intellibus | Reston, VA | Indeed | https://www.indeed.com/viewjob?jk=bdd9a12b0d1e31ea | New |
 | 2026-08-28 | Senior Tech Delivery Lead (Life Insurance) | Intellibus | Reston, VA | Indeed | https://www.indeed.com/viewjob?jk=90867be4eb4edffb | New |
 | 2026-09-08 | Test Manager / QA Manager, Life Insurance (1-year renewable contract) | Evolution Singapore | Singapore | LinkedIn | https://sg.linkedin.com/jobs/view/test-manager-qa-manager-life-insurance-1-year-renewable-contract-at-evolution-singapore-4399111720 | New |
+| 2026-09-11 | Senior Manager, Program Delivery | Transamerica | Not stated in listing | LinkedIn | https://www.linkedin.com/jobs/view/senior-manager-program-delivery-at-transamerica-4430589342 | New |
 
 ## Removed — non-LinkedIn/Naukri/Indeed sources (2026-09-11 purge)
 
@@ -744,3 +745,16 @@ level (~14 years for Quality Manager/Project Manager, ~7 years for SAP GTS)
 query with no sector term returns mostly off-sector noise, as this session's
 live test demonstrated, so the sector filter stays mandatory alongside the
 new experience bias.
+
+## Run log — 2026-09-11 (run 3)
+
+Weekday scheduled trigger fired again (third time today). Re-verified `docs/SCOUT.md` and `seen-jobs.md` were unchanged from the prior state before starting (17 main-table rows post-purge, 1 SAP GTS lead). First run under the restricted 3-source list (LinkedIn/Naukri/Indeed only, §4) and the new experience-level query bias (§2/§15) — both applied throughout. Keywords rotated across delivery/program manager + insurance/lending (global LinkedIn), QA/test manager + banking/NBFC/fintech (India LinkedIn), delivery/project manager + insurance/banking with 12-18yr phrasing (Naukri), quality/test manager + banking/insurance/NBFC with 10-15yr phrasing (Naukri), and delivery/QA manager + insurance/banking/fintech (Indeed).
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | 2 queries. Query 1 (delivery/program manager, insurance/lending, senior): 1 new — Transamerica (Senior Manager, Program Delivery; retirement/life insurance carrier, on-sector, no confirmed stale date — logged per §5 default-to-New). Prasha Consultancy "Director/AVP - Delivery Lead/Senior Program Manager (Insurance Domain Must)" excluded — same employer/role pattern flagged as a recurring already-excluded posting in the 2026-09-11 run 1 log (a different job ID each time it resurfaces, consistent with an evergreen staffing-agency listing rather than a genuine new opening); Remitly, BMO, and Morgan Stanley postings confirmed-stale via LinkedIn job-ID magnitude (well below the current ~4.44-4.49B range), Morgan Stanley also off-sector (fleet/vehicle delivery, not BFSI). Query 2 (QA/test manager, banking/NBFC/fintech, India): only aggregator/category pages returned, no individual postings to evaluate. 0 new from this query. |
+| Naukri (WebSearch) | ok | 2 queries. Query 1 (delivery/project manager, insurance/banking, 12-17/13-18yrs): 0 new — Deltek (off-sector, project/ERP software) and UST Technical Delivery Manager both confirmed-stale via URL date-decoding (Aug 2025, July 2026); UST "Delivery Manager I (Payer Domain)" — on-sector (health-insurance payer domain delivery work) but confirmed-stale (decoded July 22, 2026, 51 days old); QualityKiosk and Accenture results off-sector and/or stale. Query 2 (quality/test manager, banking/insurance/NBFC, 10-15yrs): 0 new — all results off-sector (RIB Software, Technocrafts Electric, Vishay, Basil Quality Testing Lab, Hong Guang De Technology — manufacturing/generic QA, no BFSI signal), same pattern confirmed earlier today with the broader experience-bias test. |
+| Indeed (WebSearch) | ok | 2 queries (delivery/project manager insurance/lending senior; QA manager/quality assurance manager insurance/banking/fintech). Only aggregator/category hub pages returned both times (no individual `viewjob?jk=` URLs to evaluate). 0 new. |
+| GitHub issues | ok | 0 open issues/leads. |
+
+New postings logged: 1. Rejected: 0.
