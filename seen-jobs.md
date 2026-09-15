@@ -21,6 +21,7 @@ Format: | Date First Seen | Title | Company | Location | Source | URL | Status |
 | 2026-09-11 | Senior Manager, Program Delivery | Transamerica | Not stated in listing | LinkedIn | https://www.linkedin.com/jobs/view/senior-manager-program-delivery-at-transamerica-4430589342 | New |
 | 2026-09-14 | Delivery Leader Program Manager- Insurance-underwriter skill | Datum Technologies Group | Ohio, United States | LinkedIn | https://www.linkedin.com/jobs/view/delivery-leader-program-manager-insurance-underwriter-skill-at-datum-technologies-group-4416190268 | New |
 | 2026-09-14 | Remote Opportunity for QA Lead/SME-Annuity Policy Administration Systems | Noblesoft Technologies | Remote | LinkedIn | https://www.linkedin.com/jobs/view/remote-opportunity-for-qa-lead-sme-annuity-policy-administration-systems-at-noblesoft-technologies-4431855667 | New |
+| 2026-09-15 | Quality Assurance Engineer, Lending, Amazon India Payments | Amazon | India (city not stated) | LinkedIn | https://in.linkedin.com/jobs/view/quality-assurance-engineer-lending-amazon-india-payments-at-amazon-4408782112 | New |
 
 ## Removed — non-LinkedIn/Naukri/Indeed sources (2026-09-11 purge)
 
@@ -777,3 +778,19 @@ First run since 2026-09-11 (3-day gap, weekend). Re-verified `docs/SCOUT.md` and
 | Indeed (WebSearch, SAP GTS §15) | ok | Only aggregator/category hub pages returned, no individual postings to evaluate. 0 new. |
 
 New postings logged: 2 (main list). Unverified leads logged: 1 (Prasha Consultancy — see note above on the policy correction). SAP GTS leads logged: 0 (1 promising candidate found but skipped per the strict confirmed-date rule). Freelancing leads logged: 0 (not queried this run — prioritized the main list/SAP GTS given the 3-day gap). Rejected: 0.
+
+## Run log — 2026-09-15
+
+Re-verified `docs/SCOUT.md` and `seen-jobs.md` were unchanged from the prior confirmed state before starting (20 main-table rows post-purge, 1 Unverified lead, 1 SAP GTS lead). Applied the experience-level and recency/jobAge biases throughout. Keywords rotated to fresh angles: implementation manager/PMO + banking/fintech/core banking (LinkedIn), quality/test analyst + insurance/NBFC/lending (India LinkedIn), implementation manager/PMO + insurance/banking with 12-18yr phrasing (Naukri), test/QA manager + NBFC/life/health insurance with 10-15yr phrasing (Naukri), program/implementation manager + insurance/banking/fintech (Indeed), plus a SAP GTS sweep (LinkedIn) and a Freelancing sweep (Upwork, Toptal) since neither had been checked in a couple of runs.
+
+| Source | Result | Notes |
+|---|---|---|
+| LinkedIn (WebSearch) | ok | 2 queries. Query 1 (implementation manager/PMO, banking/fintech/core banking): 0 new — GIOS Technology ×2 (Sept 2025 per listing, confirmed-stale), Bankers Healthcare Group and Evolve Bank & Trust off-category (Marketing/Onboarding Manager, not PM/Delivery or QA), Knight FinTech confirmed-stale via old ID. Query 2 (quality/test analyst, insurance/NBFC/lending, India): 1 new — Amazon (Quality Assurance Engineer, Lending, Amazon India Payments; job ID 4408782112, on-sector — lending/payments — not confirmed stale, comparable ID range to the 2026-09-14 Datum inclusion). CareerXperts Consulting "Quality Analyst" excluded — no BFSI/InsurTech/lending/retirement domain signal visible in the listing (recruiting agency posting, sector unconfirmed) despite a fresh-looking ID. Several JPMorganChase/Built In/CareerBuilder results off-source-list, not logged. |
+| Naukri (WebSearch) | ok | 2 queries (implementation manager/PMO insurance/banking 12-18yrs; test/QA manager NBFC/life/health insurance 10-15yrs). 0 new: query 1 surfaced no individual Naukri postings (only a category page and off-source-list results — itjobswatch.co.uk, jobs.techstars.com — not logged); query 2 results (Healthmap Diagnostics, Pratiti Technologies, Nexus Professionals, Jabsons Foods) all off-sector (diagnostics/IoT-software/staffing/food companies, no BFSI signal) and/or confirmed-stale via URL date-decoding (June 2026, March 2026). |
+| Indeed (WebSearch) | ok | Program/implementation manager + insurance/banking/fintech query. 1 exact duplicate found (Sunrise Banks "Fintech Implementation Manager", same `jk=0a4e63bce510eee3` already logged 2026-08-28) — not re-logged. Remainder aggregator/category hub pages. 0 new. |
+| GitHub issues | ok | 0 open issues/leads. |
+| LinkedIn (WebSearch, SAP GTS §15) | ok | "SAP GTS" experience-phrased query. Cortex Consultants LLC "SAP GTS Consultant - 12+Y" (job ID 4320705038) confirmed-stale via ID magnitude (well below the current fresh range) — fails the strict confirmed-date rule either way. One LinkedIn *post* (not a `jobs/view` posting) mentioning a Manager-level SAP GTS role was not logged — wrong URL format, not a formal job listing. Remainder off-source-list (ZipRecruiter, TotalJobs) or category pages. 0 new. |
+| Upwork (WebSearch, Freelancing §14) | ok | Project manager/QA tester + fintech/insurance freelance query. Only hire-a-freelancer/category pages and freelancer profile bios returned, no individual client-posted job to evaluate. 0 new. |
+| Toptal (WebSearch, Freelancing §14) | ok | Project manager/QA + banking/insurance freelance query. Only freelancer-profile bios and skills-directory pages returned, no individual client-posted job to evaluate. 0 new. |
+
+New postings logged: 1 (main list). Unverified leads logged: 0. SAP GTS leads logged: 0. Freelancing leads logged: 0. Rejected: 0.
